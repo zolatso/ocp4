@@ -1,8 +1,6 @@
-import json
-import os
 import datetime
 import random
-from views import print_tournament
+
 
 class Player:
     def __init__(self, first_name, last_name, dob):
@@ -10,8 +8,10 @@ class Player:
         self.last_name = last_name
         self.dob = datetime.datetime.strptime(dob, "%d/%m/%Y").date()
         self.total_score = 0
+        self.matches_played = 0
+        self.tournaments = []
 
-class PlayerInTournament():
+class PlayerInTournament:
     def __init__(self, player):
         self.player = player
         self.score_in_tournament = 0
@@ -31,6 +31,7 @@ class Tournament:
         new_list = []
         for obj in players:
             new_list.append(PlayerInTournament(obj))
+            obj.tournaments.append(self)
         return new_list
     
     def create_first_list_of_matches(self, round, players):
@@ -41,9 +42,12 @@ class Tournament:
             players_copy.remove(playerA)
             playerB = random.choice(players_copy)
             players_copy.remove(playerB)
-            match = Match(self.name, round, playerA, 0, playerB, 0)
+            match = Match(self, round, playerA, 0, playerB, 0)
             matches.append(match)
         return matches
+    
+    def create_list_of_matches(self, round, players):
+        pass
         
     def generate_new_round(self):
         self.current_round += 1
@@ -65,18 +69,6 @@ class Round:
         self.tournament = tournament
         self.start_date = datetime.datetime.now().date()
         self.list_of_matches = []
-
-    #def update_player_scores_in_tournament(self):
-    #    player_list = self.tournament.list_of_players
-    #    for player_object in self.list_of_matches:
-    #        for item in enumerate(player_list):
-    #            if item[0] is player_object.playerA:
-    #                item[1] = player_object.playerA_score
-    #            if item[0] is player_object.playerB:
-    #                item[1] = player_object.playerB_score
-
-    def update_player_total_scores(self):
-        pass
 
     def play_matches(self):
         for match in self.list_of_matches:
@@ -110,31 +102,11 @@ class Match:
         self.playerB.score_in_tournament += self.playerB_score
         self.playerA.player.total_score += self.playerA_score
         self.playerB.player.total_score += self.playerB_score
-
-def extract_players(n):
-    # This function takes the players json file and ranomly selects the passed number into a list of player objects
-    file_to_open = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data/players/players.json')
-    with open(file_to_open, 'r') as f:
-        initial_list = json.load(f)
-    converted_list = []
-    for i in range(n):
-        selection = random.choice(initial_list)
-        converted_list.append(PlayerInTournament(selection[0], selection[1], selection[2]))
-        initial_list.remove(selection)
-    return converted_list
+        self.playerA.player.matches_played += 1
+        self.playerB.player.matches_played += 1
 
 def main():
-
-    
-    tournament80 = Tournament('tournament 86533', 'Marseille', 5, extract_players(6), 
-                            'le premier tournois du nouvel an')
-
-
-    roundxyz = tournament80.generate_new_round()
-    
-    print(roundxyz.list_of_matches)
-    #print_tournament(tournament80)
-
+    pass
 
 if __name__ == '__main__':
     main()

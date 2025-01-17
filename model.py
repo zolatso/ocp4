@@ -10,11 +10,13 @@ class Player:
         self.total_score = 0
         self.matches_played = 0
         self.tournaments = []
+        
 
 class PlayerInTournament:
     def __init__(self, player):
         self.player = player
         self.score_in_tournament = 0
+
 
 class Tournament:
     def __init__(self, name, place, number_of_rounds, list_of_players,

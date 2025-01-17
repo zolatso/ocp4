@@ -48,4 +48,8 @@ def print_players(players):
         print(f"Player: {f_name} {l_name} {dob}") 
         print(f"Matches played: {matches} Total score: {score}") 
         print(f"Tournaments played in: {tournaments}")
-        print("-" * 80)   
+        print("-" * 80)
+
+class MainMenuView:
+    def input_result(self):
+        return input("Please enter an option: ")

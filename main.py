@@ -1,7 +1,7 @@
 import os
 import json
 from random import sample
-from model import Player, PlayerInTournament, Match, Tournament, Round
+from model import Tournament, Round, PlayerManager
 from views import print_tournament, print_round, print_players
 from controller import MainMenu
 # from controller import extract_players
@@ -10,13 +10,13 @@ def main():
     main_menu = MainMenu()
     main_menu.run()
 
-    # players = extract_players()
+    # load_players = PlayerManager()
     
     # tournament80 = Tournament(
     #     name='tournament 86533',
     #     place='Marseille',
     #     number_of_rounds=5,
-    #     players=sample(players, 12),
+    #     players=sample(load_players.players, 12),
     #     description='le premier tournois du nouvel an'
     # )
     
@@ -38,10 +38,15 @@ def main():
 
     # print_tournament(tournament80)
 
-    # print_players(players)
+    # print_players(load_players.players)
 
-    # tournament90 = Tournament('tournament 2475957', 'Paris', 5, random.sample(players, 10), 
-    #                         'le deuxieme tournois du nouvel an')
+    # tournament90 = Tournament(
+    #     name='tournament 2475957', 
+    #     place='Paris',
+    #     number_of_rounds=5,
+    #     players=sample(load_players.players, 10), 
+    #     description='le deuxieme tournois du nouvel an'
+    #     )
     
     # print_tournament(tournament90)
     
@@ -61,7 +66,7 @@ def main():
 
     # print_tournament(tournament90)
 
-    # print_players(players)
+    # print_players(load_players.players)
 
 if __name__ == '__main__':
     main()

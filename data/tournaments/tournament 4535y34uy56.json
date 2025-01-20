@@ -1,0 +1,108 @@
+{
+    "name": "tournament 4535y34uy56",
+    "place": "Marseille",
+    "date": "20/01/2025",
+    "number_of_rounds": 5,
+    "current_round": 2,
+    "players": [
+        "Betty Picasso",
+        "Roisin Johanson",
+        "Roisin Hodgson",
+        "Peter Saunders",
+        "Josephine Rowntree",
+        "Remy Johanson",
+        "Josephine Collins",
+        "Peter Peterson"
+    ],
+    "rounds": [
+        "Round 1",
+        "20/01/2025",
+        [
+            [
+                [
+                    "Josephine Rowntree",
+                    0.5
+                ],
+                [
+                    "Peter Saunders",
+                    0.5
+                ]
+            ],
+            [
+                [
+                    "Remy Johanson",
+                    0
+                ],
+                [
+                    "Peter Peterson",
+                    1
+                ]
+            ],
+            [
+                [
+                    "Roisin Hodgson",
+                    0.5
+                ],
+                [
+                    "Roisin Johanson",
+                    0.5
+                ]
+            ],
+            [
+                [
+                    "Betty Picasso",
+                    0.5
+                ],
+                [
+                    "Josephine Collins",
+                    0.5
+                ]
+            ]
+        ],
+        "Round 2",
+        "20/01/2025",
+        [
+            [
+                [
+                    "Josephine Rowntree",
+                    1
+                ],
+                [
+                    "Peter Peterson",
+                    0
+                ]
+            ],
+            [
+                [
+                    "Remy Johanson",
+                    0.5
+                ],
+                [
+                    "Roisin Hodgson",
+                    0.5
+                ]
+            ],
+            [
+                [
+                    "Roisin Johanson",
+                    0.5
+                ],
+                [
+                    "Josephine Collins",
+                    0.5
+                ]
+            ],
+            [
+                [
+                    "Betty Picasso",
+                    0.5
+                ],
+                [
+                    "Peter Saunders",
+                    0.5
+                ]
+            ]
+        ]
+    ],
+    "description": "le deuxieme tournois du nouvel an"
+}

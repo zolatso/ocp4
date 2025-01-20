@@ -1,0 +1,152 @@
+{
+    "name": "tournament 86533",
+    "place": "Marseille",
+    "date": "20/01/2025",
+    "number_of_rounds": 5,
+    "current_round": 2,
+    "players": [
+        "Josephine Rowntree",
+        "William Peterson",
+        "Colin Peterson",
+        "Nicholas Peterson",
+        "Roisin Johanson",
+        "Roisin Hodgson",
+        "Betty Baker",
+        "Sheila Turner",
+        "Michael Saunders",
+        "William Hodgson",
+        "Nicholas Bacon",
+        "Peter Saunders"
+    ],
+    "rounds": [
+        "Round 1",
+        "20/01/2025",
+        [
+            [
+                [
+                    "William Hodgson",
+                    0.5
+                ],
+                [
+                    "Peter Saunders",
+                    0.5
+                ]
+            ],
+            [
+                [
+                    "Roisin Johanson",
+                    0.5
+                ],
+                [
+                    "Sheila Turner",
+                    0.5
+                ]
+            ],
+            [
+                [
+                    "William Peterson",
+                    1
+                ],
+                [
+                    "Roisin Hodgson",
+                    0
+                ]
+            ],
+            [
+                [
+                    "Nicholas Peterson",
+                    0
+                ],
+                [
+                    "Nicholas Bacon",
+                    1
+                ]
+            ],
+            [
+                [
+                    "Josephine Rowntree",
+                    0.5
+                ],
+                [
+                    "Michael Saunders",
+                    0.5
+                ]
+            ],
+            [
+                [
+                    "Betty Baker",
+                    0.5
+                ],
+                [
+                    "Colin Peterson",
+                    0.5
+                ]
+            ]
+        ],
+        "Round 2",
+        "20/01/2025",
+        [
+            [
+                [
+                    "Nicholas Bacon",
+                    0
+                ],
+                [
+                    "Nicholas Peterson",
+                    1
+                ]
+            ],
+            [
+                [
+                    "Roisin Johanson",
+                    1
+                ],
+                [
+                    "Josephine Rowntree",
+                    0
+                ]
+            ],
+            [
+                [
+                    "Betty Baker",
+                    1
+                ],
+                [
+                    "Colin Peterson",
+                    0
+                ]
+            ],
+            [
+                [
+                    "Peter Saunders",
+                    0
+                ],
+                [
+                    "Sheila Turner",
+                    1
+                ]
+            ],
+            [
+                [
+                    "Roisin Hodgson",
+                    1
+                ],
+                [
+                    "Michael Saunders",
+                    0
+                ]
+            ],
+            [
+                [
+                    "William Peterson",
+                    0
+                ],
+                [
+                    "William Hodgson",
+                    1
+                ]
+            ]
+        ]
+    ],
+    "description": "le premier tournois du nouvel an"
+}

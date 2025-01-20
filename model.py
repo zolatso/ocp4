@@ -45,14 +45,13 @@ class PlayerManager:
 class Tournament:
     def __init__(self, **kwargs):
         self.name = kwargs['name']
-        self.place = kwargs['place']
+        self.place = kwargs.get('place', 'Marseille')
         self.start_date = datetime.datetime.now().date()
         self.number_of_rounds = kwargs.get('number_of_rounds', 4)
         self.current_round = 0
         self.players = kwargs['players']
         self.rounds = []
-        self.description = kwargs['description']
-    
+        self.description = kwargs.get('description', 'No description')
     # def turn_players_into_tournament_players(self, players):
     #     new_list = []
     #     for obj in players:
@@ -90,42 +89,55 @@ class Tournament:
 
 
 class TournamentManager:
-    def __init__(self, tournaments):
-        self.tournaments = [tournaments]
+    def __init__(self):
+        self.tournaments = []
+
+    def convert_to_dict(self, tournament):
+        data = {}
+        data['name'] = tournament.name
+        data['place'] = tournament.place
+        data['date'] = tournament.start_date.strftime("%d/%m/%Y")
+        data['number_of_rounds'] = tournament.number_of_rounds
+        data['current_round'] = tournament.current_round
+        data['players'] = []
+        for player in tournament.players:
+            full_name = player.first_name + ' ' + player.last_name
+            data['players'].append(full_name)
+        data['rounds'] = []
+        for round in tournament.rounds:
+            individual_round = {}
+            individual_round['name'] = round.name
+            individual_round['start_date'] = round.start_date.strftime("%d/%m/%Y")
+            matches = []
+            for match in round.matches:
+                player_and_score_a = [match[0][0].first_name + ' ' + match[0][0].last_name, match[0][1]]
+                player_and_score_b = [match[1][0].first_name + ' ' + match[1][0].last_name, match[1][1]]
+                pair = [player_and_score_a, player_and_score_b]
+                matches.append(pair)
+            individual_round['matches'] = matches
+            data['rounds'].append(individual_round)
+        data['description'] = tournament.description
+        return data
+    
+    def save_to_file(self, data):
+        json_save_folder = create_dir('data/tournaments')    
+        file_name = data['name'] + '.json'
+        json_file_path = os.path.join(json_save_folder, file_name)
+        with open(json_file_path, 'w') as f:
+            json.dump(data, f, indent = 4)
 
     def save(self):
-        json_save_folder = create_dir('data/tournaments')
         for item in self.tournaments:
-            data = {}
-            data['name'] = item.name
-            data['place'] = item.place
-            data['date'] = item.start_date.strftime("%d/%m/%Y")
-            data['number_of_rounds'] = item.number_of_rounds
-            data['current_round'] = item.current_round
-            data['players'] = []
-            for player in item.players:
-                full_name = player.first_name + ' ' + player.last_name
-                data['players'].append(full_name)
-            data['rounds'] = []
-            for round in item.rounds:
-                data['rounds'].append(round.name)
-                data['rounds'].append(round.start_date.strftime("%d/%m/%Y"))
-                matches = []
-                for match in round.matches:
-                    player_and_score_a = [match[0][0].first_name + ' ' + match[0][0].last_name, match[0][1]]
-                    player_and_score_b = [match[1][0].first_name + ' ' + match[1][0].last_name, match[1][1]]
-                    pair = [player_and_score_a, player_and_score_b]
-                    matches.append(pair)
-                data['rounds'].append(matches)
-            data['description'] = item.description
-            
-            file_name = item.name + '.json'
-            json_file_path = os.path.join(json_save_folder, file_name)
-            with open(json_file_path, 'w') as f:
-                json.dump(data, f, indent = 4)
-
+            data = self.convert_to_dict(item)
+            self.save_to_file(data)
+        
     def load():
-        pass
+        
+        file_to_open = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data/players/players.json')
+        with open(file_to_open, 'r') as f:
+            initial_list = json.load(f)
+        for item in initial_list:
+            self.players.append(Player(item[0], item[1], item[2]))
 
 class Round:
     def __init__(self, name):
@@ -185,6 +197,22 @@ def create_dir(name):
 def main():
 
     load_players = PlayerManager()
+    load_tournaments = TournamentManager()
+
+    tournament120 = Tournament(
+        name='tournament 234245364654',
+        number_of_rounds=5,
+        players=sample(load_players.players, 6),
+    )
+
+    load_tournaments.tournaments.append(tournament120)
+
+    tournament120.generate_new_round().play_matches()
+    tournament120.generate_new_round().play_matches()
+    tournament120.generate_new_round().play_matches()
+
+    load_tournaments.save()
+
 
 if __name__ == '__main__':
     main()

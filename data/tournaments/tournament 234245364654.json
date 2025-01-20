@@ -1,0 +1,126 @@
+{
+    "name": "tournament 234245364654",
+    "place": "Marseille",
+    "date": "20/01/2025",
+    "number_of_rounds": 5,
+    "current_round": 3,
+    "players": [
+        "Loic Constable",
+        "Roisin Hodgson",
+        "Betty Picasso",
+        "Josephine Rowntree",
+        "Roisin Hodgson",
+        "Sheila Turner"
+    ],
+    "rounds": [
+        {
+            "name": "Round 1",
+            "start_date": "20/01/2025",
+            "matches": [
+                [
+                    [
+                        "Roisin Hodgson",
+                        1
+                    ],
+                    [
+                        "Sheila Turner",
+                        0
+                    ]
+                ],
+                [
+                    [
+                        "Betty Picasso",
+                        1
+                    ],
+                    [
+                        "Josephine Rowntree",
+                        0
+                    ]
+                ],
+                [
+                    [
+                        "Roisin Hodgson",
+                        0
+                    ],
+                    [
+                        "Loic Constable",
+                        1
+                    ]
+                ]
+            ]
+        },
+        {
+            "name": "Round 2",
+            "start_date": "20/01/2025",
+            "matches": [
+                [
+                    [
+                        "Roisin Hodgson",
+                        0.5
+                    ],
+                    [
+                        "Betty Picasso",
+                        0.5
+                    ]
+                ],
+                [
+                    [
+                        "Loic Constable",
+                        0
+                    ],
+                    [
+                        "Josephine Rowntree",
+                        1
+                    ]
+                ],
+                [
+                    [
+                        "Roisin Hodgson",
+                        0.5
+                    ],
+                    [
+                        "Sheila Turner",
+                        0.5
+                    ]
+                ]
+            ]
+        },
+        {
+            "name": "Round 3",
+            "start_date": "20/01/2025",
+            "matches": [
+                [
+                    [
+                        "Loic Constable",
+                        1
+                    ],
+                    [
+                        "Josephine Rowntree",
+                        0
+                    ]
+                ],
+                [
+                    [
+                        "Betty Picasso",
+                        1
+                    ],
+                    [
+                        "Roisin Hodgson",
+                        0
+                    ]
+                ],
+                [
+                    [
+                        "Sheila Turner",
+                        0.5
+                    ],
+                    [
+                        "Roisin Hodgson",
+                        0.5
+                    ]
+                ]
+            ]
+        }
+    ],
+    "description": "No description"
+}

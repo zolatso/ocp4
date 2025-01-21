@@ -5,13 +5,10 @@ from random import choice, sample
 
 
 class Player:
-    def __init__(self, first_name, last_name, dob):
-        self.first_name = first_name
-        self.last_name = last_name
-        self.dob = datetime.datetime.strptime(dob, "%d/%m/%Y").date()
-        self.total_score = 0
-        self.matches_played = 0
-        self.tournaments = []
+    def __init__(self, **kwargs):
+        self.first_name = kwargs['first_name']
+        self.last_name = kwargs['last_name']
+        self.dob = kwargs['dob']
 
     def score_in_tournament(self, tournament):
         pass
@@ -21,19 +18,30 @@ class Player:
         
 
 class PlayerManager:
+    file_to_open = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data/players/players.json')
+    
     def __init__(self):
         self.players = []
         self.load()
 
     def save(self):
-        pass
+        data = []
+        for obj in self.players:
+            player = [obj.first_name, obj.last_name, obj.dob.strftime("%d/%m/%Y")]
+            data.append(player)
+        with open(self.file_to_open, 'w') as f:
+            json.dump(data, f, indent = 4)
 
     def load(self):
-        file_to_open = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data/players/players.json')
-        with open(file_to_open, 'r') as f:
+        with open(self.file_to_open, 'r') as f:
             initial_list = json.load(f)
         for item in initial_list:
-            self.players.append(Player(item[0], item[1], item[2]))
+            player = Player(
+                first_name = item[0],
+                last_name = item[1],
+                dob = datetime.datetime.strptime(item[2], "%d/%m/%Y").date()
+            )
+            self.players.append(player)
 
 
 class Tournament:
@@ -42,7 +50,7 @@ class Tournament:
         self.place = kwargs.get('place', 'Marseille')
         self.start_date = datetime.datetime.now().date()
         self.number_of_rounds = kwargs.get('number_of_rounds', 4)
-        self.current_round = 0
+        self.current_round = kwargs.get('current_round', 1)
         self.players = kwargs['players']
         self.rounds = kwargs.get('rounds', [])
         self.description = kwargs.get('description', 'No description')
@@ -134,7 +142,7 @@ class TournamentManager:
                 place = data['place'],
                 date = datetime.datetime.strptime(data['date'], "%d/%m/%Y").date(),
                 number_of_rounds = data['number_of_rounds'],
-                current_round = data['current_round'],
+                current_round = len(rounds),
                 players = players,
                 rounds = rounds,
                 description = data['description']
@@ -215,7 +223,11 @@ def main():
     load_tournaments = TournamentManager(load_players.players)
     load_tournaments.load()
     tournaments = load_tournaments.tournaments
-    print(tournaments)
+
+    tournaments[0].generate_new_round().play_matches()
+    
+    load_players.save()
+    load_tournaments.save()
 
     # tournament120 = Tournament(
     #     name='tournament 234245364654',

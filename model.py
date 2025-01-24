@@ -18,7 +18,7 @@ class Player:
         
 
 class PlayerManager:
-    file_to_open = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data/players/players.json')
+    players_json_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data/players/players.json')
     
     def __init__(self):
         self.players = []
@@ -29,11 +29,11 @@ class PlayerManager:
         for obj in self.players:
             player = [obj.first_name, obj.last_name, obj.dob.strftime("%d/%m/%Y")]
             data.append(player)
-        with open(self.file_to_open, 'w') as f:
+        with open(self.players_json_file, 'w') as f:
             json.dump(data, f, indent = 4)
 
     def load(self):
-        with open(self.file_to_open, 'r') as f:
+        with open(self.players_json_file, 'r') as f:
             initial_list = json.load(f)
         for item in initial_list:
             player = Player(
@@ -218,30 +218,8 @@ def create_dir(name):
 
 
 def main():
-
-    load_players = PlayerManager()
-    load_tournaments = TournamentManager(load_players.players)
-    load_tournaments.load()
-    tournaments = load_tournaments.tournaments
-
-    tournaments[0].generate_new_round().play_matches()
+    pass
     
-    load_players.save()
-    load_tournaments.save()
-
-    # tournament120 = Tournament(
-    #     name='tournament 234245364654',
-    #     number_of_rounds=5,
-    #     players=sample(load_players.players, 6),
-    # )
-
-    # load_tournaments.tournaments.append(tournament120)
-
-    # tournament120.generate_new_round().play_matches()
-    # tournament120.generate_new_round().play_matches()
-    # tournament120.generate_new_round().play_matches()
-
-    #load_tournaments.save()
 
 
 if __name__ == '__main__':

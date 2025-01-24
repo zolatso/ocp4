@@ -1,9 +1,9 @@
 {
     "name": "tournament 234245364654",
     "place": "Marseille",
-    "date": "21/01/2025",
+    "date": "24/01/2025",
     "number_of_rounds": 5,
-    "current_round": 5,
+    "current_round": 6,
     "players": [
         "Loic Constable",
         "Roisin Hodgson",
@@ -188,6 +188,42 @@
                     ],
                     [
                         "Roisin Hodgson",
+                        0
+                    ]
+                ]
+            ]
+        },
+        {
+            "name": "Round 6",
+            "start_date": "24/01/2025",
+            "matches": [
+                [
+                    [
+                        "Betty Picasso",
+                        0
+                    ],
+                    [
+                        "Roisin Hodgson",
+                        1
+                    ]
+                ],
+                [
+                    [
+                        "Loic Constable",
+                        0.5
+                    ],
+                    [
+                        "Roisin Hodgson",
+                        0.5
+                    ]
+                ],
+                [
+                    [
+                        "Sheila Turner",
+                        1
+                    ],
+                    [
+                        "Josephine Rowntree",
                         0
                     ]
                 ]

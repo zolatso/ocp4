@@ -1,6 +1,6 @@
 import os
 import json
-from random import sample, random
+from random import sample, random, randrange
 from model import Tournament, Round, PlayerManager, TournamentManager, Player
 from views import print_tournament, print_round, print_players
 from controller import MainMenu
@@ -15,7 +15,7 @@ def main():
     load_tournaments.load()
     tournaments = load_tournaments.tournaments
 
-    tournament_name = "Tournament" + str(int(random() * 10000)) 
+    tournament_name = "Tournament" + str(randrange(0, 10000000000)) 
     new_tournament = Tournament(
         name = tournament_name,
         players = sample(load_players.players, 16)
@@ -25,8 +25,6 @@ def main():
     new_tournament.generate_new_round().play_matches()
     new_tournament.generate_new_round().play_matches()
     new_tournament.generate_new_round().play_matches()
-
-    new_player = Player()
     
     load_players.save()
     load_tournaments.save()

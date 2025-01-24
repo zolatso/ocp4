@@ -1,3 +1,5 @@
+from abc import ABC, abstractmethod
+
 def print_tournament(obj):
     print("-" * 80)
     print("Printing Tournament")
@@ -52,6 +54,42 @@ def print_players(players):
         #print(f"Tournaments played in: {tournaments}")
         print("-" * 80)
 
-class MainMenuView:
+class MenuView(ABC):
+    @abstractmethod
+    def prompt_options(self):
+        pass
+
     def input_result(self):
         return input("Please enter an option: ")
+
+class MainMenuView(MenuView):
+    def prompt_options(self):
+        print(
+            "Please choose an option:\n"
+            "0: Exit menu\n"
+            "1: Create tournament\n"
+            "2: Load tournament\n"
+            "3: Create player\n"
+            "4: Show reports\n"
+        )
+    
+    def invalid_option(self, option):
+        print(f"Option {option} is invalid, please choose a number between 0 and 4")
+    
+class ReportMenuView(MenuView):
+    def choose_tournament(self, tournaments):
+        print("Please choose a tournament among those:")
+        for index, tournament in enumerate(tournaments):
+            print(f"{index}: {tournament}")
+        return input("Your choice: ")
+
+    def prompt_options(self):
+        print(
+            "Please choose an option:\n"
+            "0: Exit menu\n"
+            "1: Display all players\n"
+            "2: Display all tournament\n"
+            "3: Display tournament details (name and date)\n"
+            "4: Display tournament players\n"
+            "5: Display tournament rounds\n"
+        )

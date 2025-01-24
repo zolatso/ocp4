@@ -1,26 +1,26 @@
 {
-    "name": "Tournament9403222904",
+    "name": "Tournament4538690437",
     "place": "Marseille",
     "date": "24/01/2025",
     "number_of_rounds": 4,
-    "current_round": 3,
+    "current_round": 4,
     "players": [
+        "Michael Picasso",
         "Sheila Turner",
-        "Nicholas Bacon",
-        "Peter Peterson",
-        "Roisin Turner",
+        "Roisin Johanson",
+        "Josephine Collins",
         "Sheila Mingus",
+        "Josephine Hodgson",
+        "Peter Peterson",
         "Roisin Hodgson",
-        "David Turner",
-        "William Peterson",
-        "Gilles Peterson",
-        "Roisin Baker",
+        "David Collins",
+        "Peter Saunders",
+        "Colin Peterson",
+        "Remy Johanson",
         "Peter Baker",
-        "William Hodgson",
-        "Nicholas Peterson",
-        "Nicholas Hodgson",
-        "Josephine Bacon",
-        "Roisin Peterson"
+        "Nicholas Bacon",
+        "Roisin Baker",
+        "Betty Baker"
     ],
     "rounds": [
         {
@@ -29,57 +29,17 @@
             "matches": [
                 [
                     [
-                        "Roisin Turner",
+                        "Josephine Hodgson",
                         1
                     ],
+                    [
+                        "Roisin Johanson",
+                        0
+                    ]
+                ],
+                [
                     [
                         "Peter Peterson",
-                        0
-                    ]
-                ],
-                [
-                    [
-                        "David Turner",
-                        0.5
-                    ],
-                    [
-                        "William Hodgson",
-                        0.5
-                    ]
-                ],
-                [
-                    [
-                        "Nicholas Bacon",
-                        0.5
-                    ],
-                    [
-                        "Nicholas Peterson",
-                        0.5
-                    ]
-                ],
-                [
-                    [
-                        "Nicholas Hodgson",
-                        1
-                    ],
-                    [
-                        "Peter Baker",
-                        0
-                    ]
-                ],
-                [
-                    [
-                        "Roisin Peterson",
-                        0
-                    ],
-                    [
-                        "Gilles Peterson",
-                        1
-                    ]
-                ],
-                [
-                    [
-                        "Roisin Hodgson",
                         0
                     ],
                     [
@@ -89,21 +49,61 @@
                 ],
                 [
                     [
-                        "Sheila Turner",
-                        1
+                        "Peter Saunders",
+                        0
                     ],
                     [
-                        "William Peterson",
+                        "Peter Baker",
+                        1
+                    ]
+                ],
+                [
+                    [
+                        "Michael Picasso",
                         0
+                    ],
+                    [
+                        "Josephine Collins",
+                        1
+                    ]
+                ],
+                [
+                    [
+                        "Sheila Turner",
+                        0.5
+                    ],
+                    [
+                        "Remy Johanson",
+                        0.5
+                    ]
+                ],
+                [
+                    [
+                        "Nicholas Bacon",
+                        0
+                    ],
+                    [
+                        "Betty Baker",
+                        1
                     ]
                 ],
                 [
                     [
                         "Sheila Mingus",
+                        1
+                    ],
+                    [
+                        "Roisin Hodgson",
+                        0
+                    ]
+                ],
+                [
+                    [
+                        "David Collins",
                         0.5
                     ],
                     [
-                        "Josephine Bacon",
+                        "Colin Peterson",
                         0.5
                     ]
                 ]
@@ -115,22 +115,72 @@
             "matches": [
                 [
                     [
-                        "Gilles Peterson",
+                        "Roisin Johanson",
+                        0
+                    ],
+                    [
+                        "Sheila Turner",
+                        1
+                    ]
+                ],
+                [
+                    [
+                        "Michael Picasso",
                         0.5
                     ],
                     [
-                        "Nicholas Peterson",
+                        "Colin Peterson",
                         0.5
                     ]
                 ],
                 [
                     [
+                        "Josephine Hodgson",
+                        0
+                    ],
+                    [
+                        "Betty Baker",
+                        1
+                    ]
+                ],
+                [
+                    [
                         "Roisin Hodgson",
+                        0
+                    ],
+                    [
+                        "Peter Saunders",
+                        1
+                    ]
+                ],
+                [
+                    [
+                        "Peter Baker",
                         1
                     ],
                     [
-                        "Sheila Turner",
+                        "David Collins",
                         0
+                    ]
+                ],
+                [
+                    [
+                        "Roisin Baker",
+                        0.5
+                    ],
+                    [
+                        "Peter Peterson",
+                        0.5
+                    ]
+                ],
+                [
+                    [
+                        "Sheila Mingus",
+                        0.5
+                    ],
+                    [
+                        "Remy Johanson",
+                        0.5
                     ]
                 ],
                 [
@@ -139,58 +189,8 @@
                         0.5
                     ],
                     [
-                        "Roisin Peterson",
+                        "Josephine Collins",
                         0.5
-                    ]
-                ],
-                [
-                    [
-                        "Roisin Baker",
-                        1
-                    ],
-                    [
-                        "Josephine Bacon",
-                        0
-                    ]
-                ],
-                [
-                    [
-                        "William Hodgson",
-                        0
-                    ],
-                    [
-                        "David Turner",
-                        1
-                    ]
-                ],
-                [
-                    [
-                        "Roisin Turner",
-                        0
-                    ],
-                    [
-                        "Sheila Mingus",
-                        1
-                    ]
-                ],
-                [
-                    [
-                        "William Peterson",
-                        0.5
-                    ],
-                    [
-                        "Nicholas Hodgson",
-                        0.5
-                    ]
-                ],
-                [
-                    [
-                        "Peter Baker",
-                        0
-                    ],
-                    [
-                        "Peter Peterson",
-                        1
                     ]
                 ]
             ]
@@ -201,27 +201,17 @@
             "matches": [
                 [
                     [
-                        "Sheila Mingus",
+                        "Betty Baker",
                         1
                     ],
                     [
-                        "William Hodgson",
+                        "Remy Johanson",
                         0
                     ]
                 ],
                 [
                     [
-                        "Nicholas Hodgson",
-                        1
-                    ],
-                    [
-                        "Nicholas Peterson",
-                        0
-                    ]
-                ],
-                [
-                    [
-                        "David Turner",
+                        "Roisin Johanson",
                         0.5
                     ],
                     [
@@ -231,41 +221,51 @@
                 ],
                 [
                     [
-                        "Josephine Bacon",
-                        0.5
+                        "Josephine Collins",
+                        1
                     ],
+                    [
+                        "Michael Picasso",
+                        0
+                    ]
+                ],
+                [
                     [
                         "Nicholas Bacon",
+                        0
+                    ],
+                    [
+                        "Peter Saunders",
+                        1
+                    ]
+                ],
+                [
+                    [
+                        "Peter Baker",
+                        0
+                    ],
+                    [
+                        "Colin Peterson",
+                        1
+                    ]
+                ],
+                [
+                    [
+                        "David Collins",
+                        0.5
+                    ],
+                    [
+                        "Sheila Mingus",
                         0.5
                     ]
                 ],
                 [
-                    [
-                        "Gilles Peterson",
-                        1
-                    ],
-                    [
-                        "Roisin Hodgson",
-                        0
-                    ]
-                ],
-                [
-                    [
-                        "Roisin Turner",
-                        0
-                    ],
                     [
                         "Peter Peterson",
-                        1
-                    ]
-                ],
-                [
-                    [
-                        "William Peterson",
                         0.5
                     ],
                     [
-                        "Roisin Peterson",
+                        "Josephine Hodgson",
                         0.5
                     ]
                 ],
@@ -275,7 +275,7 @@
                         1
                     ],
                     [
-                        "Peter Baker",
+                        "Roisin Hodgson",
                         0
                     ]
                 ]

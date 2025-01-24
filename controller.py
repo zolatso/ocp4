@@ -3,7 +3,7 @@ import json
 import random
 from model import PlayerManager, TournamentManager
 from enum import IntEnum
-from views import MainMenuView
+from views import MainMenuView, ReportMenuView
 
 # def extract_players():
 #     # This function takes the players json file and ranomly selects the passed number into a list of player objects
@@ -25,11 +25,52 @@ class MainMenuOptions(IntEnum):
 class MainMenu:
     def __init__(self):
         self.player_manager = PlayerManager()
-        self.tournament_manager = TournamentManager()
+        self.tournament_manager = TournamentManager(self.player_manager.players)
         self.menu = MainMenuView()
+        self.reports_menu = None
 
     def run(self):
-        result = -1
+        options = {
+            1: lambda self: self.create_tournament(),
+            2: lambda self: self.load_tournament(),
+            3: lambda self: self.create_tournament(),
+            4: lambda self: self.load_report_menu()
+        }
+
+        result = None
         while result != MainMenuOptions.EXIT:
+            self.menu.prompt_options()
+            result = self.menu.input_result()
+            result = int(result)
+            # Except 0 as it's the exit option
+            if result != 0:
+                try:
+                    options[result](self)
+                except KeyError:
+                    self.menu.invalid_option(result)
+
+    def load_report_menu(self):
+        if not self.reports_menu:
+            self.reports_menu = ReportsMenu(self.tournament_manager, self.player_manager)
+        self.reports_menu.run()
+
+class ReportsMenuOptions(IntEnum):
+    EXIT = 0
+    ALL_PLAYERS = 1
+    ALL_TOURNAMENTS = 2
+    TOURNAMENT_DETAIL = 3
+    TOURNAMENT_PLAYERS = 4
+    TOURNAMENT_ROUNDS = 5
+
+class ReportsMenu:
+    def __init__(self, tournament_manager, player_manager):
+        self.tournament_manager = tournament_manager
+        self.player_manager = player_manager
+        self.menu = ReportMenuView()
+
+    def run(self):
+        result = None
+        while result != ReportsMenuOptions.EXIT:
+            self.menu.prompt_options()
             result = self.menu.input_result()
             result = int(result)

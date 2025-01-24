@@ -7,27 +7,27 @@ from controller import MainMenu
 # from controller import extract_players
 
 def main():
-    # main_menu = MainMenu()
-    # main_menu.run()
+    main_menu = MainMenu()
+    main_menu.run()
 
-    load_players = PlayerManager()
-    load_tournaments = TournamentManager(load_players.players)
-    load_tournaments.load()
-    tournaments = load_tournaments.tournaments
+    # load_players = PlayerManager()
+    # load_tournaments = TournamentManager(load_players.players)
+    # load_tournaments.load()
+    # tournaments = load_tournaments.tournaments
 
-    tournament_name = "Tournament" + str(randrange(0, 10000000000)) 
-    new_tournament = Tournament(
-        name = tournament_name,
-        players = sample(load_players.players, 16)
-    )
-    tournaments.append(new_tournament)
+    # tournament_name = "Tournament" + str(randrange(0, 10000000000)) 
+    # new_tournament = Tournament(
+    #     name = tournament_name,
+    #     players = sample(load_players.players, 16)
+    # )
+    # tournaments.append(new_tournament)
 
-    new_tournament.generate_new_round().play_matches()
-    new_tournament.generate_new_round().play_matches()
-    new_tournament.generate_new_round().play_matches()
+    # new_tournament.generate_new_round().play_matches()
+    # new_tournament.generate_new_round().play_matches()
+    # new_tournament.generate_new_round().play_matches()
     
-    load_players.save()
-    load_tournaments.save()
+    # load_players.save()
+    # load_tournaments.save()
 
     # load_players = PlayerManager()
     

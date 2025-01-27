@@ -9,6 +9,7 @@ class Player:
         self.first_name = kwargs['first_name']
         self.last_name = kwargs['last_name']
         self.dob = kwargs['dob']
+        self.identifiant = kwargs.get('identifiant', None)
 
     def score_in_tournament(self, tournament):
         pass
@@ -27,7 +28,7 @@ class PlayerManager:
     def save(self):
         data = []
         for obj in self.players:
-            player = [obj.first_name, obj.last_name, obj.dob.strftime("%d/%m/%Y")]
+            player = [obj.first_name, obj.last_name, obj.dob.strftime("%d/%m/%Y"), obj.identifiant]
             data.append(player)
         with open(self.players_json_file, 'w') as f:
             json.dump(data, f, indent = 4)
@@ -39,7 +40,8 @@ class PlayerManager:
             player = Player(
                 first_name = item[0],
                 last_name = item[1],
-                dob = datetime.datetime.strptime(item[2], "%d/%m/%Y").date()
+                dob = datetime.datetime.strptime(item[2], "%d/%m/%Y").date(),
+                identifiant = item[3]
             )
             self.players.append(player)
 
@@ -90,6 +92,7 @@ class TournamentManager:
     def __init__(self, players):
         self.tournaments = []
         self.players = players
+        self.load()
 
     def convert_to_dict(self, tournament):
         data = {}
@@ -217,10 +220,9 @@ def create_dir(name):
     return new_path
 
 
+
 def main():
     pass
-    
-
 
 if __name__ == '__main__':
     main()

@@ -38,6 +38,11 @@ def create_dir(name):
         os.mkdir(new_path)
     return new_path
 
+def generate_identifiant():
+    id = choice(ascii_uppercase) + choice(ascii_uppercase) + str(randrange(1000,9999))
+    return id
+
+
 if __name__ == '__main__':
 
     list_of_people = create_list_of_people(32)

@@ -3,17 +3,7 @@ import json
 import random
 from model import PlayerManager, TournamentManager
 from enum import IntEnum
-from views import MainMenuView, ReportMenuView
-
-# def extract_players():
-#     # This function takes the players json file and ranomly selects the passed number into a list of player objects
-#     file_to_open = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data/players/players.json')
-#     with open(file_to_open, 'r') as f:
-#         initial_list = json.load(f)
-#     converted_list = []
-#     for item in initial_list:
-#         converted_list.append(Player(item[0], item[1], item[2]))
-#     return converted_list
+from views import MainMenuView, ReportMenuView, CreatePlayerView, ReportViews
 
 class MainMenuOptions(IntEnum):
     EXIT = 0
@@ -33,7 +23,7 @@ class MainMenu:
         options = {
             1: lambda self: self.create_tournament(),
             2: lambda self: self.load_tournament(),
-            3: lambda self: self.create_tournament(),
+            3: lambda self: self.create_player(),
             4: lambda self: self.load_report_menu()
         }
 
@@ -54,6 +44,9 @@ class MainMenu:
             self.reports_menu = ReportsMenu(self.tournament_manager, self.player_manager)
         self.reports_menu.run()
 
+    def create_player(self):
+        pass
+
 class ReportsMenuOptions(IntEnum):
     EXIT = 0
     ALL_PLAYERS = 1
@@ -69,8 +62,44 @@ class ReportsMenu:
         self.menu = ReportMenuView()
 
     def run(self):
+        options = {
+            1: lambda self: self.all_players(),
+            2: lambda self: self.tournament_details(),
+            3: lambda self: self.tournament_players(),
+            4: lambda self: self.tournament_rounds(),
+            5: lambda self: self.tournament_ranking()
+        }
         result = None
         while result != ReportsMenuOptions.EXIT:
             self.menu.prompt_options()
             result = self.menu.input_result()
             result = int(result)
+            if result != 0:
+                try:
+                    options[result](self)
+                except KeyError:
+                    self.menu.invalid_option(result)
+
+    def all_players(self):
+        self.menu.all_players(self.player_manager.players)
+
+    def tournament_details(self):
+        tournaments = self.tournament_manager.tournaments
+        result = self.menu.choose_tournament(tournaments, 'details')
+        for index, obj in enumerate(tournaments):
+            if int(result) == index:
+                self.menu.tournament_details(obj)
+            
+    def tournament_players(self):
+        tournaments = self.tournament_manager.tournaments
+        result = self.menu.choose_tournament(tournaments, 'players')
+        for index, obj in enumerate(tournaments):
+            if int(result) == index:
+                self.menu.tournament_players(obj)
+
+    def tournament_rounds(self):
+        tournaments = self.tournament_manager.tournaments
+        result = self.menu.choose_tournament(tournaments, 'rounds')
+        for index, obj in enumerate(tournaments):
+            if int(result) == index:
+                self.menu.tournament_rounds(obj)

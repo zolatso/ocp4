@@ -25,8 +25,11 @@ class MainMenuView(MenuView):
 
 
 class CreatePlayerView():
-    def input_result(self):
-        return input("Please ")
+    def player_input(self, aspect):
+        return input(f"Please enter the player's {aspect}: ")
+    
+    def error_msg(self):
+        print("Something wrong with the input")
 
     
 class ReportMenuView(MenuView):    

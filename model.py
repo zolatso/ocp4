@@ -8,7 +8,7 @@ class Player:
     def __init__(self, **kwargs):
         self.first_name = kwargs['first_name']
         self.last_name = kwargs['last_name']
-        self.dob = kwargs['dob']
+        self.dob = datetime.datetime.strptime(kwargs['dob'], "%d/%m/%Y").date()
         self.identifiant = kwargs.get('identifiant', None)
 
     def score_in_tournament(self, tournament):
@@ -40,7 +40,7 @@ class PlayerManager:
             player = Player(
                 first_name = item[0],
                 last_name = item[1],
-                dob = datetime.datetime.strptime(item[2], "%d/%m/%Y").date(),
+                dob = item[2],
                 identifiant = item[3]
             )
             self.players.append(player)

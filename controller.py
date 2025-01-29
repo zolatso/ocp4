@@ -1,7 +1,8 @@
 import os
 import json
 import random
-from model import PlayerManager, TournamentManager
+import re
+from model import PlayerManager, TournamentManager, Player
 from enum import IntEnum
 from views import MainMenuView, ReportMenuView, CreatePlayerView
 
@@ -45,7 +46,63 @@ class MainMenu:
         self.reports_menu.run()
 
     def create_player(self):
-        pass
+        create_player = CreatePlayer(self.player_manager)
+        create_player.run()
+        
+
+class CreatePlayer:
+    def __init__(self, player_manager):
+        self.player_manager = player_manager
+        self.view = CreatePlayerView()
+
+    def run(self):
+        results = []
+        while True:
+            result = self.view.player_input('first_name')
+            pattern = r'[\d\s\W]'
+            if re.search(pattern, result):
+                self.view.error_msg()
+            else:
+                results.append(result)
+                break
+
+        while True:
+            result = self.view.player_input('last_name')
+            pattern = r'[\d\s\W]'
+            if re.search(pattern, result):
+                self.view.error_msg()
+            else:
+                results.append(result)
+                break
+
+        while True:
+            result = self.view.player_input('dob')
+            pattern = r'^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/(19|20)\d{2}$'
+            if not re.match(pattern, result):
+                self.view.error_msg()
+            else:
+                results.append(result)
+                break
+
+        while True:
+            result = self.view.player_input('identifiant')
+            pattern = r'^[A-Z]{2}[0-9]{4}$'
+            if not re.match(pattern, result):
+                self.view.error_msg()
+            else:
+                results.append(result)
+                break
+
+        new_player = Player(
+            first_name = results[0], 
+            last_name = results[1],
+            dob = results[2],
+            identifiant = results[3]
+        )
+        self.player_manager.players.append(new_player)
+        self.player_manager.save()
+
+
 
 class ReportsMenuOptions(IntEnum):
     EXIT = 0

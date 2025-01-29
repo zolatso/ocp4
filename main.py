@@ -2,7 +2,6 @@ import os
 import json
 from random import sample, random, randrange
 from model import Tournament, Round, PlayerManager, TournamentManager, Player
-from views import print_tournament, print_round, print_players
 from controller import MainMenu
 # from controller import extract_players
 

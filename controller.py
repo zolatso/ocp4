@@ -3,7 +3,7 @@ import json
 import random
 from model import PlayerManager, TournamentManager
 from enum import IntEnum
-from views import MainMenuView, ReportMenuView, CreatePlayerView, ReportViews
+from views import MainMenuView, ReportMenuView, CreatePlayerView
 
 class MainMenuOptions(IntEnum):
     EXIT = 0
@@ -64,10 +64,10 @@ class ReportsMenu:
     def run(self):
         options = {
             1: lambda self: self.all_players(),
-            2: lambda self: self.tournament_details(),
-            3: lambda self: self.tournament_players(),
-            4: lambda self: self.tournament_rounds(),
-            5: lambda self: self.tournament_ranking()
+            2: lambda self: self.tournament_display('details'),
+            3: lambda self: self.tournament_display('players'),
+            4: lambda self: self.tournament_display('rounds')
+            #5: lambda self: self.tournament_display('ranking')
         }
         result = None
         while result != ReportsMenuOptions.EXIT:
@@ -83,23 +83,23 @@ class ReportsMenu:
     def all_players(self):
         self.menu.all_players(self.player_manager.players)
 
-    def tournament_details(self):
+    def tournament_display(self, aspect):
         tournaments = self.tournament_manager.tournaments
-        result = self.menu.choose_tournament(tournaments, 'details')
+        result = self.menu.choose_tournament(tournaments, aspect)
         for index, obj in enumerate(tournaments):
             if int(result) == index:
-                self.menu.tournament_details(obj)
+                self.menu.tournament_display(obj, aspect)
             
-    def tournament_players(self):
-        tournaments = self.tournament_manager.tournaments
-        result = self.menu.choose_tournament(tournaments, 'players')
-        for index, obj in enumerate(tournaments):
-            if int(result) == index:
-                self.menu.tournament_players(obj)
+    # def tournament_players(self):
+    #     tournaments = self.tournament_manager.tournaments
+    #     result = self.menu.choose_tournament(tournaments, 'players')
+    #     for index, obj in enumerate(tournaments):
+    #         if int(result) == index:
+    #             self.menu.tournament_players(obj)
 
-    def tournament_rounds(self):
-        tournaments = self.tournament_manager.tournaments
-        result = self.menu.choose_tournament(tournaments, 'rounds')
-        for index, obj in enumerate(tournaments):
-            if int(result) == index:
-                self.menu.tournament_rounds(obj)
+    # def tournament_rounds(self):
+    #     tournaments = self.tournament_manager.tournaments
+    #     result = self.menu.choose_tournament(tournaments, 'rounds')
+    #     for index, obj in enumerate(tournaments):
+    #         if int(result) == index:
+    #             self.menu.tournament_rounds(obj)

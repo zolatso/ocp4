@@ -50,7 +50,8 @@ class Tournament:
     def __init__(self, **kwargs):
         self.name = kwargs['name']
         self.place = kwargs.get('place', 'Marseille')
-        self.start_date = datetime.datetime.now().date()
+        now = datetime.datetime.now().date()
+        self.start_date = kwargs.get(datetime.datetime.strptime(kwargs['start_date'], "%d/%m/%Y").date(), now)
         self.number_of_rounds = kwargs.get('number_of_rounds', 4)
         self.current_round = kwargs.get('current_round', 1)
         self.players = kwargs['players']
@@ -72,7 +73,6 @@ class Tournament:
         pass
         
     def generate_new_round(self):
-        self.current_round += 1
         name_of_round = "Round " + str(self.current_round)
         if self.current_round == 1:
             matches = self.create_first_matches(self.players)
@@ -85,6 +85,7 @@ class Tournament:
             matches = matches
         )
         self.rounds.append(round)
+        self.current_round += 1
         return round
 
 
@@ -143,9 +144,10 @@ class TournamentManager:
             tournament = Tournament(
                 name = data['name'],
                 place = data['place'],
-                date = datetime.datetime.strptime(data['date'], "%d/%m/%Y").date(),
+                #start_date = datetime.datetime.strptime(data['date'], "%d/%m/%Y").date(),
+                start_date = data['date'],
                 number_of_rounds = data['number_of_rounds'],
-                current_round = len(rounds),
+                current_round = len(rounds)+1,
                 players = players,
                 rounds = rounds,
                 description = data['description']

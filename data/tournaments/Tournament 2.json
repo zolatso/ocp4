@@ -1,0 +1,90 @@
+{
+    "name": "Tournament 2",
+    "place": "Marseille",
+    "date": "30/01/2025",
+    "number_of_rounds": "6",
+    "current_round": 3,
+    "players": [
+        "Roisin Hodgson",
+        "William Hodgson",
+        "Roisin Hodgson",
+        "David Collins",
+        "Tom Saunders",
+        "Remy Johanson"
+    ],
+    "rounds": [
+        {
+            "name": "Round 1",
+            "start_date": "30/01/2025",
+            "matches": [
+                [
+                    [
+                        "David Collins",
+                        "1"
+                    ],
+                    [
+                        "Tom Saunders",
+                        "0"
+                    ]
+                ],
+                [
+                    [
+                        "Roisin Hodgson",
+                        "0.5"
+                    ],
+                    [
+                        "William Hodgson",
+                        "0.5"
+                    ]
+                ],
+                [
+                    [
+                        "Roisin Hodgson",
+                        "0"
+                    ],
+                    [
+                        "Remy Johanson",
+                        "1"
+                    ]
+                ]
+            ]
+        },
+        {
+            "name": "Round 2",
+            "start_date": "30/01/2025",
+            "matches": [
+                [
+                    [
+                        "Roisin Hodgson",
+                        "0"
+                    ],
+                    [
+                        "Roisin Hodgson",
+                        "1"
+                    ]
+                ],
+                [
+                    [
+                        "Tom Saunders",
+                        "1"
+                    ],
+                    [
+                        "David Collins",
+                        "0"
+                    ]
+                ],
+                [
+                    [
+                        "William Hodgson",
+                        "1"
+                    ],
+                    [
+                        "Remy Johanson",
+                        "1"
+                    ]
+                ]
+            ]
+        }
+    ],
+    "description": "A nice new tournament"
+}

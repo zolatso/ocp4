@@ -1,9 +1,9 @@
 {
     "name": "Tournament2462",
     "place": "Marseille",
-    "date": "24/01/2025",
+    "date": "30/01/2025",
     "number_of_rounds": 4,
-    "current_round": 3,
+    "current_round": 4,
     "players": [
         "William Peterson",
         "Roisin Hodgson",

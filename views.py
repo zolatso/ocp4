@@ -15,7 +15,7 @@ class MainMenuView(MenuView):
             "Please choose an option:\n"
             "0: Exit menu\n"
             "1: Create tournament\n"
-            "2: Load tournament\n"
+            "2: Add games/rounds to tournament\n"
             "3: Create player\n"
             "4: Show reports\n"
         )
@@ -25,11 +25,25 @@ class MainMenuView(MenuView):
 
 
 class CreatePlayerView():
-    def player_input(self, aspect):
+    def input(self, aspect):
         return input(f"Please enter the player's {aspect}: ")
     
     def error_msg(self):
         print("Something wrong with the input")
+
+
+class CreateTournamentView():
+    def input(self, aspect):
+        return input(f"Please enter the tournament's {aspect}: ")
+    
+    def error_msg(self):
+        print("Something wrong with the input")
+
+    def choose_players(self, players):
+        for index, player in enumerate(players):
+            print(f"{index}: {player.first_name} {player.last_name}")
+        print("Please choose all the players in the tournament.\n")
+        return input("List the numbers separated by spaces:")
 
     
 class ReportMenuView(MenuView):    
@@ -82,3 +96,42 @@ class ReportMenuView(MenuView):
                     print(f"\n{item[0][0].first_name} {item[0][0].last_name} {item[0][1]}")
                     print(f"{item[1][0].first_name} {item[1][0].last_name} {item[1][1]}")
             print("-" * 80)
+
+class TournamentMenuView(MenuView):
+    def choose_tournament(self, tournaments):
+        for index, tournament in enumerate(tournaments):
+            print(f"{index}: {tournament.name}")
+        return input("Which tournament do you want to work on: ")
+    
+    def prompt_options(self, tournament):
+        print(f"What do you want to do on {tournament.name} ?:\n")
+        print(
+            "0: Exit menu\n"
+            "1: Generate pairs for new round\n"
+            "2: Input scores for current round\n"
+        )
+    
+    def dislay_matches(self, round):
+        for match in enumerate(round.matches):
+            print(f"{match[0][0].first_name} {match[0][0].last_name} {match[0][1]}\n")
+            print(f"{match[0][0].first_name} {match[0][0].last_name} {match[0][1]}\n")
+
+    def successful_pair_generation(self, tournament):
+        print(f"\n")
+        print(f"Pairs successfully generated for Round {tournament.current_round} of {tournament.name}")
+        print(f"\n")
+
+    def successful_score_entry(self, tournament):
+        print(f"\n")
+        print(f"Scores successfully entered for Round {tournament.current_round} of {tournament.name}")
+        print(f"\n")
+
+    def input_scores(self, match, index):
+        print(
+            f"\nMatch {index + 1}: {match[0][0].first_name} {match[0][0].last_name} "
+            f"vs. {match[1][0].first_name} {match[1][0].last_name}\n\n"
+            f"Please enter each player's score separated by a space.\n"
+            f"Victory = 1 point, loss = 0 points, draw = 0.5 points\n"
+            f"Sum of scores must always equal 1\n\n"
+            )
+        return input("Enter scores: ")

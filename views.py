@@ -116,7 +116,7 @@ class TournamentMenuView(MenuView):
         )
 
     def error_msg(self, error):
-        print(f"{error}")
+        print(f"Input error: {error}")
     
     def dislay_matches(self, round):
         for match in enumerate(round.matches):
@@ -135,10 +135,9 @@ class TournamentMenuView(MenuView):
 
     def input_scores(self, match, index):
         print(
-            f"\nMatch {index + 1}: {match[0][0].first_name} {match[0][0].last_name} "
-            f"vs. {match[1][0].first_name} {match[1][0].last_name}\n\n"
-            f"Please enter each player's score separated by a space.\n"
-            f"Victory = 1 point, loss = 0 points, draw = 0.5 points\n"
-            f"Sum of scores must always equal 1\n\n"
+            f"\nMatch {index + 1}\nPlayer 1: {match[0][0].first_name} {match[0][0].last_name} "
+            f"\nPlayer 2: {match[1][0].first_name} {match[1][0].last_name}\n\n"
+            f"Who won?\n"
+            f"For Player 1, enter 1. For Player 2, enter 2. For a draw, enter 3.\n"
             )
-        return input("Enter scores: ")
+        return input("Enter: ")

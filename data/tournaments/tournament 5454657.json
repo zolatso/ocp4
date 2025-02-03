@@ -2,7 +2,7 @@
     "name": "tournament 5454657",
     "place": "Marseille",
     "date": "10/10/2024",
-    "number_of_rounds": 6,
+    "number_of_rounds": 2,
     "players": [
         "Roisin Hodgson",
         "Roisin Hodgson",
@@ -19,7 +19,7 @@
                 [
                     [
                         "Peter Peterson",
-                        0
+                        1
                     ],
                     [
                         "William Hodgson",
@@ -29,7 +29,7 @@
                 [
                     [
                         "Roisin Hodgson",
-                        0
+                        1
                     ],
                     [
                         "Tom Saunders",
@@ -39,7 +39,7 @@
                 [
                     [
                         "David Collins",
-                        0
+                        1
                     ],
                     [
                         "Roisin Hodgson",

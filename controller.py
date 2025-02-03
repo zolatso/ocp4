@@ -259,18 +259,39 @@ class TournamentsMenu:
         self.menu.successful_pair_generation(tournament)
         self.tournament_manager.save()
 
+    def get_scores(self, match, index):
+        while True:
+            result = self.menu.input_scores(match, index)
+            pattern = r'^[1-3]$'
+            if re.match(pattern, result):
+                result = int(result)
+                if result == 1:
+                    scores = [1, 0]
+                elif result == 2:
+                    scores = [0, 1]
+                elif result == 3:
+                    scores = [0.5, 0.5]
+                return scores
+            else:
+                self.menu.error_msg("Please enter either 1, 2, or 3")
+
     def input_scores(self, tournament):
         if len(tournament.rounds) == 0:
             self.menu.error_msg("No rounds have been created for this tournament. Please generate round first")
             return False
         
         round = tournament.rounds[-1]
+
+        # i am here
+        if (round.matches[-1]) 
+
+        
         for i in range(len(round.matches)):
-            scores = self.menu.input_scores(round.matches[i], i).split()
+            scores = self.get_scores(round.matches[i], i)
             round.matches[i][0][1] = scores[0]
             round.matches[i][1][1] = scores[1]
         self.menu.successful_score_entry(tournament)
-        if tournament.current_round == tournament.number_of_rounds:
+        if len(tournament.rounds) == tournament.number_of_rounds:
             tournament.complete = True
         self.tournament_manager.save()
 

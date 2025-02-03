@@ -52,10 +52,9 @@ class Tournament:
         self.place = kwargs.get('place', 'Marseille')
         self.start_date = datetime.datetime.strptime(kwargs['start_date'], "%d/%m/%Y").date()
         self.number_of_rounds = kwargs.get('number_of_rounds', 4)
-        self.current_round = kwargs.get('current_round', 0)
+        #self.current_round = kwargs.get('current_round', 0)
         self.players = kwargs['players']
         self.rounds = kwargs.get('rounds', [])
-        self.current_round = len
         self.description = kwargs.get('description', 'No description')
         self.complete = kwargs.get('complete', False)
     
@@ -74,8 +73,8 @@ class Tournament:
         pass
         
     def generate_new_round(self):
-        name_of_round = "Round " + str(self.current_round)
-        if self.current_round == 1:
+        name_of_round = "Round " + str(len(self.rounds) + 1)
+        if len(self.rounds) == 1:
             matches = self.create_first_matches(self.players)
         else:
         # this functionality doesn't work yet as I haven't written the full pair generation function
@@ -101,7 +100,6 @@ class TournamentManager:
         data['place'] = tournament.place
         data['date'] = tournament.start_date.strftime("%d/%m/%Y")
         data['number_of_rounds'] = tournament.number_of_rounds
-        data['current_round'] = tournament.current_round
         data['players'] = []
         for player in tournament.players:
             full_name = player.first_name + ' ' + player.last_name
@@ -148,7 +146,6 @@ class TournamentManager:
                 #start_date = datetime.datetime.strptime(data['date'], "%d/%m/%Y").date(),
                 start_date = data['date'],
                 number_of_rounds = data['number_of_rounds'],
-                current_round = len(rounds)+1,
                 players = players,
                 rounds = rounds,
                 description = data['description'],

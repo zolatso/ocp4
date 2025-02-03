@@ -125,12 +125,12 @@ class TournamentMenuView(MenuView):
 
     def successful_pair_generation(self, tournament):
         print(f"\n")
-        print(f"Pairs successfully generated for Round {tournament.current_round} of {tournament.name}")
+        print(f"Pairs successfully generated for Round {len(tournament.rounds)} of {tournament.name}")
         print(f"\n")
 
     def successful_score_entry(self, tournament):
         print(f"\n")
-        print(f"Scores successfully entered for Round {tournament.current_round} of {tournament.name}")
+        print(f"Scores successfully entered for Round {len(tournament.rounds)} of {tournament.name}")
         print(f"\n")
 
     def input_scores(self, match, index):

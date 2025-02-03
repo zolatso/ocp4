@@ -77,9 +77,7 @@ class Tournament:
         if len(self.rounds) == 1:
             matches = self.create_first_matches(self.players)
         else:
-        # this functionality doesn't work yet as I haven't written the full pair generation function
-        # simply repeats fully random generation of pairs
-            matches = self.create_first_matches(self.players)
+            matches = self.create_matches(self.players)
         round = Round(
             name = name_of_round,
             matches = matches
@@ -116,6 +114,7 @@ class TournamentManager:
                 pair = [player_and_score_a, player_and_score_b]
                 matches.append(pair)
             individual_round['matches'] = matches
+            individual_round['complete'] = round.complete
             data['rounds'].append(individual_round)
         data['description'] = tournament.description
         data['complete'] = tournament.complete
@@ -174,6 +173,7 @@ class TournamentManager:
         for dict in json:
             name = dict['name']
             start_date = datetime.datetime.strptime(dict['start_date'], "%d/%m/%Y").date()
+            complete = dict['complete'] 
             matches = []
             for item in dict['matches']:
                 player_a = self.match_player_objects_to_json([item[0][0]], players)[0]
@@ -185,7 +185,8 @@ class TournamentManager:
             round = Round(
                 name = name, 
                 start_date = start_date, 
-                matches = matches
+                matches = matches, 
+                complete = complete
             )
             rounds.append(round)
         return rounds
@@ -197,6 +198,7 @@ class Round:
         self.name = kwargs['name']
         self.start_date = kwargs.get('start_date', datetime.datetime.now().date())
         self.matches = kwargs['matches']
+        self.complete = kwargs.get('complete', False)
 
     def play_matches(self):
         for match in self.matches:

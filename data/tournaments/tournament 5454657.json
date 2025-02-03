@@ -46,7 +46,45 @@
                         0
                     ]
                 ]
-            ]
+            ],
+            "complete": true
+        },
+        {
+            "name": "Round 2",
+            "start_date": "03/02/2025",
+            "matches": [
+                [
+                    [
+                        "David Collins",
+                        0
+                    ],
+                    [
+                        "Tom Saunders",
+                        0
+                    ]
+                ],
+                [
+                    [
+                        "Roisin Hodgson",
+                        0
+                    ],
+                    [
+                        "William Hodgson",
+                        0
+                    ]
+                ],
+                [
+                    [
+                        "Peter Peterson",
+                        0
+                    ],
+                    [
+                        "Roisin Hodgson",
+                        0
+                    ]
+                ]
+            ],
+            "complete": false
         }
     ],
     "description": "A difficult tournament",

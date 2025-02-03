@@ -282,15 +282,16 @@ class TournamentsMenu:
         
         round = tournament.rounds[-1]
 
-        # i am here
-        if (round.matches[-1]) 
+        if round.complete:
+            self.menu.error_msg("The current round is already complete. Please generate a new round first.")
+            return False
 
-        
         for i in range(len(round.matches)):
             scores = self.get_scores(round.matches[i], i)
             round.matches[i][0][1] = scores[0]
             round.matches[i][1][1] = scores[1]
         self.menu.successful_score_entry(tournament)
+        round.complete = True
         if len(tournament.rounds) == tournament.number_of_rounds:
             tournament.complete = True
         self.tournament_manager.save()

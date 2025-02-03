@@ -55,6 +55,7 @@ class Tournament:
         self.current_round = kwargs.get('current_round', 0)
         self.players = kwargs['players']
         self.rounds = kwargs.get('rounds', [])
+        self.current_round = len
         self.description = kwargs.get('description', 'No description')
         self.complete = kwargs.get('complete', False)
     
@@ -73,7 +74,6 @@ class Tournament:
         pass
         
     def generate_new_round(self):
-        self.current_round += 1
         name_of_round = "Round " + str(self.current_round)
         if self.current_round == 1:
             matches = self.create_first_matches(self.players)

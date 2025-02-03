@@ -36,8 +36,11 @@ class CreateTournamentView():
     def input(self, aspect):
         return input(f"Please enter the tournament's {aspect}: ")
     
-    def error_msg(self):
-        print("Something wrong with the input")
+    def error_msg(self, error):
+        print(f"Input error: {error}")
+    
+    def success_msg(self):
+        print(f"The tournament has been successfully created and saved")
 
     def choose_players(self, players):
         for index, player in enumerate(players):
@@ -110,6 +113,9 @@ class TournamentMenuView(MenuView):
             "1: Generate pairs for new round\n"
             "2: Input scores for current round\n"
         )
+
+    def error_msg(self, error):
+        print(f"{error}")
     
     def dislay_matches(self, round):
         for match in enumerate(round.matches):

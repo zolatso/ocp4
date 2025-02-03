@@ -1,0 +1,55 @@
+{
+    "name": "Old tournament",
+    "place": "Marseille",
+    "date": "15/10/2023",
+    "number_of_rounds": 1,
+    "current_round": 1,
+    "players": [
+        "Colin Peterson",
+        "Michael Picasso",
+        "David Turner",
+        "Roisin Johanson",
+        "Peter Saunders",
+        "Remy Johanson"
+    ],
+    "rounds": [
+        {
+            "name": "Round 1",
+            "start_date": "03/02/2025",
+            "matches": [
+                [
+                    [
+                        "David Turner",
+                        "1"
+                    ],
+                    [
+                        "Remy Johanson",
+                        "0"
+                    ]
+                ],
+                [
+                    [
+                        "Roisin Johanson",
+                        "1"
+                    ],
+                    [
+                        "Michael Picasso",
+                        "0"
+                    ]
+                ],
+                [
+                    [
+                        "Peter Saunders",
+                        "1"
+                    ],
+                    [
+                        "Colin Peterson",
+                        "0"
+                    ]
+                ]
+            ]
+        }
+    ],
+    "description": "a test tournament",
+    "complete": true
+}

@@ -50,13 +50,13 @@ class Tournament:
     def __init__(self, **kwargs):
         self.name = kwargs['name']
         self.place = kwargs.get('place', 'Marseille')
-        now = datetime.datetime.now().date()
-        self.start_date = kwargs.get(datetime.datetime.strptime(kwargs['start_date'], "%d/%m/%Y").date(), now)
+        self.start_date = datetime.datetime.strptime(kwargs['start_date'], "%d/%m/%Y").date()
         self.number_of_rounds = kwargs.get('number_of_rounds', 4)
-        self.current_round = kwargs.get('current_round', 1)
+        self.current_round = kwargs.get('current_round', 0)
         self.players = kwargs['players']
         self.rounds = kwargs.get('rounds', [])
         self.description = kwargs.get('description', 'No description')
+        self.complete = kwargs.get('complete', False)
     
     def create_first_matches(self, players):
         matches = []
@@ -73,6 +73,7 @@ class Tournament:
         pass
         
     def generate_new_round(self):
+        self.current_round += 1
         name_of_round = "Round " + str(self.current_round)
         if self.current_round == 1:
             matches = self.create_first_matches(self.players)
@@ -85,7 +86,6 @@ class Tournament:
             matches = matches
         )
         self.rounds.append(round)
-        self.current_round += 1
         return round
 
 
@@ -120,6 +120,7 @@ class TournamentManager:
             individual_round['matches'] = matches
             data['rounds'].append(individual_round)
         data['description'] = tournament.description
+        data['complete'] = tournament.complete
         return data
     
     def save_to_file(self, data):
@@ -150,7 +151,8 @@ class TournamentManager:
                 current_round = len(rounds)+1,
                 players = players,
                 rounds = rounds,
-                description = data['description']
+                description = data['description'],
+                complete = data['complete']
             )
             self.tournaments.append(tournament)
 
@@ -186,7 +188,7 @@ class TournamentManager:
             round = Round(
                 name = name, 
                 start_date = start_date, 
-                matches = matches,
+                matches = matches
             )
             rounds.append(round)
         return rounds

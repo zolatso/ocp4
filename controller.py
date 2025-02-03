@@ -100,27 +100,51 @@ class CreateTournament:
         self.player_manager = player_manager
         self.view = CreateTournamentView()
 
-    def get_input(self, aspect, pattern):
+    def get_input(self, aspect, pattern, error):
         while True:
             result = self.view.input(aspect)
-            regex = re.compile(pattern, re.DOTALL)
-            if regex.match(result):
+            if re.match(pattern, result):
                 return result
             else:
-                self.view.error_msg()
+                self.view.error_msg(error)
+
+    def get_player_list(self):
+        while True:
+            result = self.view.choose_players(self.player_manager.players)
+            if re.match(r"^\s*(\d+\s*)*\d+\s*$", result):
+                list = [int(item) for item in result.split()]
+                valid = True
+                if not len(list) % 2 == 0:
+                    self.view.error_msg("List contains an odd number of players")
+                    valid = False
+                for item in list:
+                    if item > len(self.player_manager.players):
+                        self.view.error_msg("List contains numbers that are not in the player list")
+                        valid = False
+                        break
+                if valid:
+                    return list
+            else:
+                self.view.error_msg("This is not a list of integers separated by spaces")
+            
 
     def run(self):
-        results = []
+        results = {}
         inputs = {
-            'name' : r".*",
-            'location' : r".*",
-            'number of rounds' : r".*",
-            'description' : r".*",
+            'name' : [r"^(?!\s*$).+", "Must contain at least one character"],
+            'location' : [r"^(?!\s*$).+", "Must contain at least one character"],
+            'start date' : [r'^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/(19|20)\d{2}$', "date in format: DD/MM/YYYY"],
+            'number of rounds' : [r"^([0-9]|1[0-9]|20)$", "Must be an integer of 20 or less"],
+            'description' : [r"^(?!\s*$).+", "must contain at least one character"]
         }
         for key, value in inputs.items():
-            results.append(self.get_input(key, value))
+            input = self.get_input(key, value[0], value[1])
+            if input:
+                results[key] = input
+            else:
+                results[key]= None
         
-        player_selection = self.view.choose_players(self.player_manager.players).split()
+        player_selection = self.get_player_list()
         players = []
         for item in player_selection:
             for index, obj in enumerate(self.player_manager.players):
@@ -128,15 +152,21 @@ class CreateTournament:
                     players.append(obj)
         
         new_tournament = Tournament(
-            name = results[0],
-            location = results[1],
-            number_of_rounds = results[2],
-            description = results[3],
-            players = players
+        **{k: v for k, v in {
+            'name': results['name'],
+            'location': results['location'],
+            'number_of_rounds': int(results['number of rounds']),
+            'description': results['description'],
+            'start_date': results['start date'],
+            'players': players
+        }.items() if v is not None}
         )
-
+    
         self.tournament_manager.tournaments.append(new_tournament)
         self.tournament_manager.save()
+
+        self.view.success_msg()
+
 
 
 class ReportsMenuOptions(IntEnum):
@@ -195,12 +225,20 @@ class TournamentsMenu:
         self.player_manager = player_manager
         self.menu = TournamentMenuView()
 
+    def choose_tournament(self, tournaments):    
+        while True:
+            result = self.menu.choose_tournament(tournaments)
+            for index, obj in enumerate(self.tournament_manager.tournaments): 
+                if index == int(result):
+                    if obj.complete: 
+                        self.menu.error_msg("This tournament is complete. Please choose another")
+                    else: 
+                        return obj
+            
     def run(self):
-        result = self.menu.choose_tournament(self.tournament_manager.tournaments)
-        for index, obj in enumerate(self.tournament_manager.tournaments): 
-            if index == int(result):
-                tournament = obj
 
+        tournament = self.choose_tournament(self.tournament_manager.tournaments)
+        
         options = {
             1: lambda self, tournament: self.generate_new_round(tournament),
             2: lambda self, tournament: self.input_scores(tournament)
@@ -216,36 +254,25 @@ class TournamentsMenu:
                     self.menu.invalid_option(result)
 
     def generate_new_round(self, tournament):
+        if tournament.complete:
+            self.menu.error_msg("This tournament is complete. Please choose another")
+            return False
         tournament.generate_new_round()
         self.menu.successful_pair_generation(tournament)
         self.tournament_manager.save()
 
     def input_scores(self, tournament):
+        if tournament.complete:
+            self.menu.error_msg("This tournament is complete. Please choose another")
+            return False
         round = tournament.rounds[-1]
         for i in range(len(round.matches)):
             scores = self.menu.input_scores(round.matches[i], i).split()
             round.matches[i][0][1] = scores[0]
             round.matches[i][1][1] = scores[1]
         self.menu.successful_score_entry(tournament)
+        if tournament.current_round == tournament.number_of_rounds:
+            tournament.complete = True
         self.tournament_manager.save()
 
-    
 
-        
-        
-    
-
-        
-    # def tournament_players(self):
-    #     tournaments = self.tournament_manager.tournaments
-    #     result = self.menu.choose_tournament(tournaments, 'players')
-    #     for index, obj in enumerate(tournaments):
-    #         if int(result) == index:
-    #             self.menu.tournament_players(obj)
-
-    # def tournament_rounds(self):
-    #     tournaments = self.tournament_manager.tournaments
-    #     result = self.menu.choose_tournament(tournaments, 'rounds')
-    #     for index, obj in enumerate(tournaments):
-    #         if int(result) == index:
-    #             self.menu.tournament_rounds(obj)

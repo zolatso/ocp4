@@ -104,6 +104,7 @@ class TournamentMenuView(MenuView):
     def choose_tournament(self, tournaments):
         for index, tournament in enumerate(tournaments):
             print(f"{index}: {tournament.name}")
+        print(f"\n Displaying list of all unfinished tournaments")
         return input("Which tournament do you want to work on: ")
     
     def prompt_options(self, tournament):

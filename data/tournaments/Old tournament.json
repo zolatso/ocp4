@@ -12,44 +12,7 @@
         "Peter Saunders",
         "Remy Johanson"
     ],
-    "rounds": [
-        {
-            "name": "Round 1",
-            "start_date": "03/02/2025",
-            "matches": [
-                [
-                    [
-                        "David Turner",
-                        "1"
-                    ],
-                    [
-                        "Remy Johanson",
-                        "0"
-                    ]
-                ],
-                [
-                    [
-                        "Roisin Johanson",
-                        "1"
-                    ],
-                    [
-                        "Michael Picasso",
-                        "0"
-                    ]
-                ],
-                [
-                    [
-                        "Peter Saunders",
-                        "1"
-                    ],
-                    [
-                        "Colin Peterson",
-                        "0"
-                    ]
-                ]
-            ]
-        }
-    ],
+    "rounds": [],
     "description": "a test tournament",
     "complete": true
 }

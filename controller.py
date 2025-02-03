@@ -227,12 +227,13 @@ class TournamentsMenu:
 
     def choose_tournament(self, tournaments):    
         while True:
-            result = self.menu.choose_tournament(tournaments)
-            for index, obj in enumerate(self.tournament_manager.tournaments): 
+            unfinished_tournaments = []
+            for obj in tournaments:
+                if not obj.complete:
+                    unfinished_tournaments.append(obj)
+            result = self.menu.choose_tournament(unfinished_tournaments)
+            for index, obj in enumerate(unfinished_tournaments): 
                 if index == int(result):
-                    if obj.complete: 
-                        self.menu.error_msg("This tournament is complete. Please choose another")
-                    else: 
                         return obj
             
     def run(self):
@@ -254,17 +255,15 @@ class TournamentsMenu:
                     self.menu.invalid_option(result)
 
     def generate_new_round(self, tournament):
-        if tournament.complete:
-            self.menu.error_msg("This tournament is complete. Please choose another")
-            return False
         tournament.generate_new_round()
         self.menu.successful_pair_generation(tournament)
         self.tournament_manager.save()
 
     def input_scores(self, tournament):
-        if tournament.complete:
-            self.menu.error_msg("This tournament is complete. Please choose another")
+        if len(tournament.rounds) == 0:
+            self.menu.error_msg("No rounds have been created for this tournament. Please generate round first")
             return False
+        
         round = tournament.rounds[-1]
         for i in range(len(round.matches)):
             scores = self.menu.input_scores(round.matches[i], i).split()

@@ -58,9 +58,9 @@ class Tournament:
         self.description = kwargs.get('description', 'No description')
         self.complete = kwargs.get('complete', False)
     
-    def create_first_matches(self, players):
+    def create_first_matches(self):
         matches = []
-        players_copy = players.copy()
+        players_copy = self.players.copy()
         while players_copy:
             pair_of_players = sample(players_copy, 2)
             match = ([pair_of_players[0], 0], [pair_of_players[1], 0])
@@ -68,23 +68,85 @@ class Tournament:
             players_copy.remove(pair_of_players[1])
             matches.append(match)
         return matches
+
+    def get_unmet_opponents(self, player):
+        met_opponents = []
+        for opponent in self.players:
+            # First thing is to check that the player we passed to the function
+            # is not the player we are checking while iterating through
+            # the list of all players
+            if opponent is player:
+                continue
+            # Once this is verified, we then need to run through all rounds and
+            # all matches unless we find that they have played together
+            # at which point both round and match loops are broken
+            for round in self.rounds:
+                for match in round.matches:
+                    players_in_match = [match[0][0], match[1][0]]
+                    if player in players_in_match and opponent in players_in_match:
+                        met_opponents.append(opponent)
+                        break
+                else:
+                    continue
+                break
+        # Given that we have established a list of opponents that the player
+        # has played against, we need to get the final array of unmet opponents
+        unmet_opponents = list(x for x in self.players if x not in met_opponents)
+        unmet_opponents.remove(player)
+        return unmet_opponents
+
+
     
-    def create_matches(self, round, players):
-        pass
+    def create_matches(self):
+        matches = []
+        players = self.players
+        ranked_players = self.get_ranking()
+        i = 0
+        for player_x, score in ranked_players.items():
+            unmet_opponents = self.get_unmet_opponents(player_x)
+            for player_y, score in other_players:
+                for obj in self.rounds:
+                    for item in obj.matches:
+                        players_in_match = [item[0][0], item[1][0]]
+                        if player_x in players_in_match and player_y in players_in_match:
+                            unmet_opponents
+
+            print(other_players)
+            break
+            
         
     def generate_new_round(self):
         name_of_round = "Round " + str(len(self.rounds) + 1)
         if len(self.rounds) == 1:
-            matches = self.create_first_matches(self.players)
+            matches = self.create_first_matches()
         else:
-            matches = self.create_matches(self.players)
+            matches = self.create_matches()
         round = Round(
             name = name_of_round,
             matches = matches
         )
         self.rounds.append(round)
         return round
-
+    
+    def get_ranking(self):
+        total_scores = []
+        for player in self.players:
+            pair = []
+            pair.append(player)
+            score = 0
+            for round in self.rounds:
+                for match in round.matches:
+                    if match[0][0] is player:
+                        score += match[0][1]
+                        break
+                    elif match[1][0] is player:
+                        score += match[1][1]
+                        break
+            pair.append(score)
+            total_scores.append(pair)
+        ranking = dict(sorted(total_scores, key=lambda item: item[1], reverse=True))
+        return ranking
+        
 
 class TournamentManager:
     def __init__(self, players):
@@ -225,7 +287,16 @@ def create_dir(name):
 
 
 def main():
-    pass
+    p_man = PlayerManager()
+    t_man = TournamentManager(p_man.players)
+
+    my_tourny = t_man.tournaments[0]
+    #print(my_tourny.get_ranking())
+    unmet_o = my_tourny.get_unmet_opponents(my_tourny.players[0])
+    readable = list(item.first_name for item in unmet_o)
+    print(readable)
+
+
 
 if __name__ == '__main__':
     main()

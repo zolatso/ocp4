@@ -5,7 +5,7 @@
     "number_of_rounds": 2,
     "players": [
         "Roisin Hodgson",
-        "Roisin Hodgson",
+        "Roisin Peterson",
         "Peter Peterson",
         "William Hodgson",
         "David Collins",
@@ -42,7 +42,7 @@
                         1
                     ],
                     [
-                        "Roisin Hodgson",
+                        "Roisin Peterson",
                         0
                     ]
                 ]
@@ -60,13 +60,13 @@
                     ],
                     [
                         "Tom Saunders",
-                        0
+                        1
                     ]
                 ],
                 [
                     [
                         "Roisin Hodgson",
-                        0
+                        1
                     ],
                     [
                         "William Hodgson",
@@ -76,17 +76,17 @@
                 [
                     [
                         "Peter Peterson",
-                        0
+                        0.5
                     ],
                     [
-                        "Roisin Hodgson",
-                        0
+                        "Roisin Peterson",
+                        0.5
                     ]
                 ]
             ],
-            "complete": false
+            "complete": true
         }
     ],
     "description": "A difficult tournament",
-    "complete": false
+    "complete": true
 }

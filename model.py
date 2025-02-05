@@ -95,26 +95,20 @@ class Tournament:
         unmet_opponents.remove(player)
         return unmet_opponents
 
-
-    
     def create_matches(self):
         matches = []
         players = self.players
-        ranked_players = self.get_ranking()
-        i = 0
-        for player_x, score in ranked_players.items():
-            unmet_opponents = self.get_unmet_opponents(player_x)
-            for player_y, score in other_players:
-                for obj in self.rounds:
-                    for item in obj.matches:
-                        players_in_match = [item[0][0], item[1][0]]
-                        if player_x in players_in_match and player_y in players_in_match:
-                            unmet_opponents
+        ranked_players = list(self.get_ranking().keys())
+        paired_players = []
+        while len(paired_players) < len(players):
+            for player in players:
+                # Create a list of all players the player has not played against yet
+                unmet_opponents = self.get_unmet_opponents(player)
+                # Get rid of any players from this list that are already paired up
+                unmet_and_unpaired_opponents = list(x for x in unmet_opponents if x not in paired_players)
 
-            print(other_players)
-            break
+                paired_players.append(player, opponent)
             
-        
     def generate_new_round(self):
         name_of_round = "Round " + str(len(self.rounds) + 1)
         if len(self.rounds) == 1:
@@ -292,9 +286,7 @@ def main():
 
     my_tourny = t_man.tournaments[0]
     #print(my_tourny.get_ranking())
-    unmet_o = my_tourny.get_unmet_opponents(my_tourny.players[0])
-    readable = list(item.first_name for item in unmet_o)
-    print(readable)
+    my_tourny.create_matches()
 
 
 

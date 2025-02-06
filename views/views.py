@@ -107,10 +107,11 @@ class ReportMenuView(MenuView):
 
 class TournamentMenuView(MenuView):
     def choose_tournament(self, tournaments):
+        print(f"\nDisplaying list of all unfinished tournaments\n")
         for index, tournament in enumerate(tournaments):
             print(f"{index}: {tournament.name}")
-        print(f"\n Displaying list of all unfinished tournaments")
-        return input("Which tournament do you want to work on: ")
+        
+        return input(f"\nWhich tournament do you want to work on: ")
     
     def prompt_options(self, tournament):
         print(f"What do you want to do on {tournament.name} ?:\n")
@@ -126,11 +127,13 @@ class TournamentMenuView(MenuView):
     def dislay_matches(self, round):
         for match in enumerate(round.matches):
             print(f"{match[0][0].first_name} {match[0][0].last_name} {match[0][1]}\n")
-            print(f"{match[0][0].first_name} {match[0][0].last_name} {match[0][1]}\n")
+            print(f"{match[1][0].first_name} {match[1][0].last_name} {match[1][1]}\n")
 
-    def successful_pair_generation(self, tournament):
+    def successful_pair_generation(self, tournament, round):
         print(f"\n")
-        print(f"Pairs successfully generated for Round {len(tournament.rounds)} of {tournament.name}")
+        print(f"Pairs successfully generated for {round.name} of {tournament.name}")
+        for match in round.matches:
+            print(f"{match[0][0].first_name} {match[0][0].last_name} vs. {match[1][0].first_name} {match[1][0].last_name}")
         print(f"\n")
 
     def successful_score_entry(self, tournament):

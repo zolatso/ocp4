@@ -122,8 +122,45 @@
                 ]
             ],
             "complete": true
+        },
+        {
+            "name": "Round 4",
+            "start_date": "06/02/2025",
+            "matches": [
+                [
+                    [
+                        "Roisin Hodgson",
+                        1
+                    ],
+                    [
+                        "Roisin Peterson",
+                        0
+                    ]
+                ],
+                [
+                    [
+                        "Peter Peterson",
+                        0
+                    ],
+                    [
+                        "Tom Saunders",
+                        1
+                    ]
+                ],
+                [
+                    [
+                        "William Hodgson",
+                        0.5
+                    ],
+                    [
+                        "David Collins",
+                        0.5
+                    ]
+                ]
+            ],
+            "complete": true
         }
     ],
     "description": "A difficult tournament",
-    "complete": false
+    "complete": true
 }

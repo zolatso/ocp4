@@ -25,12 +25,12 @@ class Tournament:
             matches.append(match)
         return matches
 
-    def get_opponents(self, player):
+    def get_opponents(self, player, paired_players):
         """
         Function takes a player and finds among the other players in the tournament
-        Those against whom the player has not played, returning a list
-        If the player has already played against all of the other players
-        The function simply returns a list of all the other players in the tournament
+        Those against whom the player has not played, returning a list of these
+
+        Alternatively, the function returns a list of all the other players in the tournament
         """
         met_opponents = []
         for opponent in self.players:
@@ -51,14 +51,17 @@ class Tournament:
                 else:
                     continue
                 break
-        # Given that we have established a list of opponents that the player
-        # has played against, we need to get the final array of unmet opponents
+
         if (len(met_opponents) == len(self.players) - 1):
-            return met_opponents
+            return list(x for x in met_opponents if x not in paired_players)
         else:
             unmet_opponents = list(x for x in self.players if x not in met_opponents)
             unmet_opponents.remove(player)
-            return unmet_opponents
+            unmet_and_unpaired_opponents = list(x for x in unmet_opponents if x not in paired_players) 
+            if not unmet_and_unpaired_opponents:
+                return list(x for x in met_opponents if x not in paired_players)
+            else:
+                return unmet_and_unpaired_opponents
 
     def create_matches(self):
         matches = []
@@ -70,12 +73,13 @@ class Tournament:
                 # We first check if the player has already been paired
                 if player in paired_players:
                     continue
+                # print(f"Trying to pair: {player.first_name} {player.last_name}")
                 # Create a list of all players the player has not played against yet
-                opponents = self.get_opponents(player)
-                # Get rid of any players from this list that are already paired up
-                unpaired_opponents = list(x for x in opponents if x not in paired_players)
+                # If they have played against them all, then return all other players
+                # We also pass the list of already paired players
+                opponents = self.get_opponents(player, paired_players)
                 # the opponent is the highest ranked in the previous list
-                opponent = self.find_highest_ranked(unpaired_opponents, ranked_players)
+                opponent = self.find_highest_ranked(opponents, ranked_players)
                 match = ([player, 0], [opponent, 0])
                 matches.append(match)
                 paired_players.append(player)

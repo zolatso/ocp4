@@ -1,0 +1,208 @@
+{
+    "name": "a new tournament",
+    "place": "Marseille",
+    "date": "10/05/2023",
+    "number_of_rounds": 6,
+    "players": [
+        "Colin Peterson",
+        "Michael Picasso",
+        "David Turner",
+        "Roisin Johanson",
+        "Peter Saunders",
+        "Remy Johanson",
+        "Nicholas Bacon",
+        "Peter Baker"
+    ],
+    "rounds": [
+        {
+            "name": "Round 1",
+            "start_date": "06/02/2025",
+            "matches": [
+                [
+                    [
+                        "Remy Johanson",
+                        0.5
+                    ],
+                    [
+                        "Peter Saunders",
+                        0.5
+                    ]
+                ],
+                [
+                    [
+                        "Michael Picasso",
+                        0.5
+                    ],
+                    [
+                        "Peter Baker",
+                        0.5
+                    ]
+                ],
+                [
+                    [
+                        "Roisin Johanson",
+                        1
+                    ],
+                    [
+                        "Nicholas Bacon",
+                        0
+                    ]
+                ],
+                [
+                    [
+                        "Colin Peterson",
+                        0
+                    ],
+                    [
+                        "David Turner",
+                        1
+                    ]
+                ]
+            ],
+            "complete": true
+        },
+        {
+            "name": "Round 2",
+            "start_date": "06/02/2025",
+            "matches": [
+                [
+                    [
+                        "David Turner",
+                        1
+                    ],
+                    [
+                        "Roisin Johanson",
+                        0
+                    ]
+                ],
+                [
+                    [
+                        "Michael Picasso",
+                        0
+                    ],
+                    [
+                        "Peter Saunders",
+                        1
+                    ]
+                ],
+                [
+                    [
+                        "Remy Johanson",
+                        0.5
+                    ],
+                    [
+                        "Peter Baker",
+                        0.5
+                    ]
+                ],
+                [
+                    [
+                        "Colin Peterson",
+                        0.5
+                    ],
+                    [
+                        "Nicholas Bacon",
+                        0.5
+                    ]
+                ]
+            ],
+            "complete": true
+        },
+        {
+            "name": "Round 3",
+            "start_date": "06/02/2025",
+            "matches": [
+                [
+                    [
+                        "David Turner",
+                        1
+                    ],
+                    [
+                        "Peter Saunders",
+                        0
+                    ]
+                ],
+                [
+                    [
+                        "Roisin Johanson",
+                        1
+                    ],
+                    [
+                        "Remy Johanson",
+                        0
+                    ]
+                ],
+                [
+                    [
+                        "Peter Baker",
+                        1
+                    ],
+                    [
+                        "Colin Peterson",
+                        0
+                    ]
+                ],
+                [
+                    [
+                        "Michael Picasso",
+                        1
+                    ],
+                    [
+                        "Nicholas Bacon",
+                        0
+                    ]
+                ]
+            ],
+            "complete": true
+        },
+        {
+            "name": "Round 4",
+            "start_date": "06/02/2025",
+            "matches": [
+                [
+                    [
+                        "David Turner",
+                        0.5
+                    ],
+                    [
+                        "Peter Baker",
+                        0.5
+                    ]
+                ],
+                [
+                    [
+                        "Roisin Johanson",
+                        0
+                    ],
+                    [
+                        "Michael Picasso",
+                        1
+                    ]
+                ],
+                [
+                    [
+                        "Peter Saunders",
+                        1
+                    ],
+                    [
+                        "Colin Peterson",
+                        0
+                    ]
+                ],
+                [
+                    [
+                        "Remy Johanson",
+                        0
+                    ],
+                    [
+                        "Nicholas Bacon",
+                        1
+                    ]
+                ]
+            ],
+            "complete": true
+        }
+    ],
+    "description": "an old torunament",
+    "complete": false
+}

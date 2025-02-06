@@ -1,7 +1,7 @@
 {
-    "name": "jadhdagdfgs",
+    "name": "test 2",
     "place": "Marseille",
-    "date": "10/05/1986",
+    "date": "15/10/1900",
     "number_of_rounds": 6,
     "players": [
         "Colin Peterson",
@@ -9,9 +9,7 @@
         "David Turner",
         "Roisin Johanson",
         "Peter Saunders",
-        "Remy Johanson",
-        "Nicholas Bacon",
-        "Peter Baker"
+        "Remy Johanson"
     ],
     "rounds": [
         {
@@ -21,10 +19,20 @@
                 [
                     [
                         "David Turner",
+                        1
+                    ],
+                    [
+                        "Colin Peterson",
+                        0
+                    ]
+                ],
+                [
+                    [
+                        "Peter Saunders",
                         0
                     ],
                     [
-                        "Peter Baker",
+                        "Remy Johanson",
                         1
                     ]
                 ],
@@ -34,28 +42,8 @@
                         0.5
                     ],
                     [
-                        "Peter Saunders",
-                        0.5
-                    ]
-                ],
-                [
-                    [
-                        "Remy Johanson",
-                        0.5
-                    ],
-                    [
-                        "Nicholas Bacon",
-                        0.5
-                    ]
-                ],
-                [
-                    [
                         "Michael Picasso",
-                        0
-                    ],
-                    [
-                        "Colin Peterson",
-                        1
+                        0.5
                     ]
                 ]
             ],
@@ -67,17 +55,7 @@
             "matches": [
                 [
                     [
-                        "Colin Peterson",
-                        1
-                    ],
-                    [
-                        "Peter Baker",
-                        0
-                    ]
-                ],
-                [
-                    [
-                        "Roisin Johanson",
+                        "David Turner",
                         1
                     ],
                     [
@@ -87,21 +65,21 @@
                 ],
                 [
                     [
-                        "Peter Saunders",
+                        "Michael Picasso",
                         1
                     ],
                     [
-                        "Nicholas Bacon",
+                        "Colin Peterson",
                         0
                     ]
                 ],
                 [
                     [
-                        "Michael Picasso",
+                        "Roisin Johanson",
                         1
                     ],
                     [
-                        "David Turner",
+                        "Peter Saunders",
                         0
                     ]
                 ]
@@ -114,17 +92,7 @@
             "matches": [
                 [
                     [
-                        "Colin Peterson",
-                        1
-                    ],
-                    [
-                        "Roisin Johanson",
-                        0
-                    ]
-                ],
-                [
-                    [
-                        "Peter Saunders",
+                        "David Turner",
                         1
                     ],
                     [
@@ -134,22 +102,22 @@
                 ],
                 [
                     [
-                        "Peter Baker",
-                        1
+                        "Roisin Johanson",
+                        0
                     ],
                     [
                         "Remy Johanson",
-                        0
+                        1
                     ]
                 ],
                 [
                     [
-                        "Nicholas Bacon",
-                        1
+                        "Colin Peterson",
+                        0.5
                     ],
                     [
-                        "David Turner",
-                        0
+                        "Peter Saunders",
+                        0.5
                     ]
                 ]
             ],
@@ -161,17 +129,7 @@
             "matches": [
                 [
                     [
-                        "Colin Peterson",
-                        1
-                    ],
-                    [
-                        "Peter Saunders",
-                        0
-                    ]
-                ],
-                [
-                    [
-                        "Peter Baker",
+                        "David Turner",
                         1
                     ],
                     [
@@ -181,22 +139,22 @@
                 ],
                 [
                     [
-                        "Nicholas Bacon",
-                        1
+                        "Remy Johanson",
+                        0
                     ],
                     [
                         "Michael Picasso",
-                        0
+                        1
                     ]
                 ],
                 [
                     [
-                        "Remy Johanson",
-                        1
+                        "Colin Peterson",
+                        0.5
                     ],
                     [
-                        "David Turner",
-                        0
+                        "Peter Saunders",
+                        0.5
                     ]
                 ]
             ],
@@ -208,21 +166,21 @@
             "matches": [
                 [
                     [
-                        "Colin Peterson",
+                        "David Turner",
                         1
                     ],
                     [
-                        "Nicholas Bacon",
+                        "Peter Saunders",
                         0
                     ]
                 ],
                 [
                     [
-                        "Peter Baker",
+                        "Michael Picasso",
                         0
                     ],
                     [
-                        "Peter Saunders",
+                        "Remy Johanson",
                         1
                     ]
                 ],
@@ -232,18 +190,8 @@
                         0.5
                     ],
                     [
-                        "Michael Picasso",
+                        "Colin Peterson",
                         0.5
-                    ]
-                ],
-                [
-                    [
-                        "Remy Johanson",
-                        0
-                    ],
-                    [
-                        "David Turner",
-                        1
                     ]
                 ]
             ],
@@ -255,7 +203,7 @@
             "matches": [
                 [
                     [
-                        "Colin Peterson",
+                        "David Turner",
                         1
                     ],
                     [
@@ -265,22 +213,86 @@
                 ],
                 [
                     [
-                        "Peter Saunders",
+                        "Michael Picasso",
                         0
                     ],
                     [
-                        "David Turner",
+                        "Peter Saunders",
                         1
                     ]
                 ],
                 [
                     [
-                        "Peter Baker",
+                        "Roisin Johanson",
                         0.5
                     ],
                     [
-                        "Nicholas Bacon",
+                        "Colin Peterson",
                         0.5
+                    ]
+                ]
+            ],
+            "complete": true
+        },
+        {
+            "name": "Round 7",
+            "start_date": "06/02/2025",
+            "matches": [
+                [
+                    [
+                        "David Turner",
+                        1
+                    ],
+                    [
+                        "Remy Johanson",
+                        0
+                    ]
+                ],
+                [
+                    [
+                        "Michael Picasso",
+                        1
+                    ],
+                    [
+                        "Roisin Johanson",
+                        0
+                    ]
+                ],
+                [
+                    [
+                        "Colin Peterson",
+                        0
+                    ],
+                    [
+                        "Peter Saunders",
+                        1
+                    ]
+                ]
+            ],
+            "complete": true
+        },
+        {
+            "name": "Round 8",
+            "start_date": "06/02/2025",
+            "matches": [
+                [
+                    [
+                        "David Turner",
+                        0
+                    ],
+                    [
+                        "Michael Picasso",
+                        0
+                    ]
+                ],
+                [
+                    [
+                        "Peter Saunders",
+                        0
+                    ],
+                    [
+                        "Remy Johanson",
+                        0
                     ]
                 ],
                 [
@@ -289,14 +301,14 @@
                         0
                     ],
                     [
-                        "Michael Picasso",
-                        1
+                        "Colin Peterson",
+                        0
                     ]
                 ]
             ],
-            "complete": true
+            "complete": false
         }
     ],
-    "description": "good one",
+    "description": "test",
     "complete": true
 }

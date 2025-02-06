@@ -259,11 +259,15 @@ class TournamentsMenu:
                     self.menu.invalid_option(result)
 
     def generate_new_round(self, tournament):
-        if not tournament.rounds[-1].complete:
-            self.menu.error_msg("The current round is not complete. Please input scores before gnerating a new round.")
-            return False
-        tournament.generate_new_round()
-        self.menu.successful_pair_generation(tournament)
+        if tournament.rounds:
+            if not tournament.rounds[-1].complete:
+                self.menu.error_msg("The current round is not complete. Please input scores before gnerating a new round.")
+                return False
+            if tournament.complete:
+                self.menu.error_msg("This tournament is now complete. Please exit the menu and choose another option")
+                return False
+        round = tournament.generate_new_round()
+        self.menu.successful_pair_generation(tournament, round)
         self.tournament_manager.save()
 
     def get_scores(self, match, index):

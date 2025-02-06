@@ -61,7 +61,6 @@ class ReportMenuView(MenuView):
             "2: Display tournament details (name, date, and place)\n"
             "3: Display tournament players\n"
             "4: Display tournament rounds\n"
-            "5: Display ranking\n"
         )
 
     def all_players(self, players):
@@ -96,14 +95,20 @@ class ReportMenuView(MenuView):
             print(f"\n\n")
 
         elif aspect == 'rounds':
+
             print(f"\n\nDisplaying rounds for {tournament.name}\n")
             for obj in tournament.rounds:
                 print("-" * 80)
                 print(f"Round: {obj.name}    Date: {obj.start_date}")
                 for item in obj.matches:
-                    print(f"\n{item[0][0].first_name} {item[0][0].last_name} {item[0][1]}")
-                    print(f"{item[1][0].first_name} {item[1][0].last_name} {item[1][1]}")
+                    spaces_a = 40 - (len(item[0][0].first_name) + len(item[0][0].last_name))
+                    spaces_b = 40 - (len(item[1][0].first_name) + len(item[1][0].last_name))
+                    gap_a = " " * spaces_a
+                    gap_b = " " * spaces_b
+                    print(f"\n{item[0][0].first_name} {item[0][0].last_name} {gap_a} {item[0][1]}")
+                    print(f"{item[1][0].first_name} {item[1][0].last_name} {gap_b} {item[1][1]}")
             print("-" * 80)
+
 
 class TournamentMenuView(MenuView):
     def choose_tournament(self, tournaments):

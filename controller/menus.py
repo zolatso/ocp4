@@ -178,7 +178,6 @@ class ReportsMenuOptions(IntEnum):
     ALL_TOURNAMENTS = 2
     TOURNAMENT_DETAIL = 3
     TOURNAMENT_PLAYERS = 4
-    TOURNAMENT_ROUNDS = 5
 
 
 class ReportsMenu:

@@ -2,9 +2,11 @@ import os
 import json
 import random
 import re
-from model import PlayerManager, TournamentManager, Player, Tournament
+from controller.managers import PlayerManager, TournamentManager
+from models.player import Player
+from models.tournament import Tournament
 from enum import IntEnum
-from views import MainMenuView, ReportMenuView, CreatePlayerView, CreateTournamentView, TournamentMenuView
+from views.views import MainMenuView, ReportMenuView, CreatePlayerView, CreateTournamentView, TournamentMenuView
 
 class MainMenuOptions(IntEnum):
     EXIT = 0
@@ -79,7 +81,7 @@ class CreatePlayer:
             'first name' : r'^[a-zA-Z]+$',
             'last name' : r'^[a-zA-Z]+$',
             'date of birth' : r'^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/(19|20)\d{2}$',
-            'identifiant' : r'^[A-Z]{2}[0-9]{4}$'
+            'identifiant' : r'^[A-Z]{2}[0-9]{5}$'
         }
         for key, value in inputs.items():
             results.append(self.get_input(key, value))
@@ -92,6 +94,7 @@ class CreatePlayer:
         )
         self.player_manager.players.append(new_player)
         self.player_manager.save()
+        self.view.success_msg(new_player)
 
 
 class CreateTournament:
@@ -204,14 +207,15 @@ class ReportsMenu:
                     self.menu.invalid_option(result)
 
     def all_players(self):
-        self.menu.all_players(self.player_manager.players)
+        players = sorted(self.player_manager.players, key=lambda player: player.last_name)
+        self.menu.all_players(players)
 
     def tournament_display(self, aspect):
         tournaments = self.tournament_manager.tournaments
         result = self.menu.choose_tournament(tournaments, aspect)
-        for index, obj in enumerate(tournaments):
+        for index, tournament in enumerate(tournaments):
             if int(result) == index:
-                self.menu.tournament_display(obj, aspect)
+                self.menu.tournament_display(tournament, aspect)
 
 class TournamentsMenuOptions(IntEnum):
     EXIT = 0
@@ -255,6 +259,9 @@ class TournamentsMenu:
                     self.menu.invalid_option(result)
 
     def generate_new_round(self, tournament):
+        if not tournament.rounds[-1].complete:
+            self.menu.error_msg("The current round is not complete. Please input scores before gnerating a new round.")
+            return False
         tournament.generate_new_round()
         self.menu.successful_pair_generation(tournament)
         self.tournament_manager.save()

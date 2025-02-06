@@ -31,6 +31,9 @@ class CreatePlayerView():
     def error_msg(self):
         print("Something wrong with the input")
 
+    def success_msg(self, player):
+        print(f"Player {player.first_name} {player.last_name} has been successfully created")
+
 
 class CreateTournamentView():
     def input(self, aspect):
@@ -62,17 +65,18 @@ class ReportMenuView(MenuView):
         )
 
     def all_players(self, players):
-        print("Listing all players")
+        print(f"\n\n")
+        print("Listing all players by alphabetical order")
         print("-" * 80)
         for obj in players:
             f_name = obj.first_name
             l_name = obj.last_name
             dob = obj.dob
             id = obj.identifiant
-            print(f"{f_name} {l_name}\n{dob} {id}") 
-            #print(f"Matches played: {matches} Total score: {score}") 
-            #print(f"Tournaments played in: {tournaments}")
-        print("-" * 80)
+            spaces = 50 - (len(l_name) + len(f_name))
+            gap = " " * spaces
+            print(f"{l_name}, {f_name}{gap}{dob}     {id}")
+        print(f"\n\n")
 
     def choose_tournament(self, tournaments, aspect):
         print(f"\nDisplay {aspect} for which tournament?")
@@ -87,8 +91,9 @@ class ReportMenuView(MenuView):
 
         elif aspect == 'players':
             print(f"\n\nDisplaying players for {tournament.name}\n")
-            for obj in tournament.players:
-                print(f"{obj.first_name} {obj.last_name}\n")
+            for player in sorted(tournament.players, key=lambda player: player.last_name):
+                print(f"{player.last_name}, {player.first_name}")
+            print(f"\n\n")
 
         elif aspect == 'rounds':
             print(f"\n\nDisplaying rounds for {tournament.name}\n")

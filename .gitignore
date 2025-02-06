@@ -4,3 +4,4 @@ __pycache__/
 venv
 main-version-for-webview.py
 preliminaries.py
+misc

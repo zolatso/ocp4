@@ -2,6 +2,10 @@ import datetime
 
 
 class Player:
+    """
+    Définit la classe du joueur
+    Defines the player class
+    """
     def __init__(self, **kwargs):
         self.first_name = kwargs["first_name"]
         self.last_name = kwargs["last_name"]

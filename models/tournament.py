@@ -4,6 +4,11 @@ from models.round import Round
 
 
 class Tournament:
+    """
+    Définit la classe du tournois
+    Defines the tournament class
+    """
+
     def __init__(self, **kwargs):
         self.name = kwargs["name"]
         self.place = kwargs.get("place", "Marseille")
@@ -18,6 +23,10 @@ class Tournament:
         self.complete = kwargs.get("complete", False)
 
     def create_first_matches(self):
+        """
+        Pour le premier tour d'un tournoi donné, les paires sont tirées au sort.
+        For the first round of any given tournament, pairs are chosen at random.
+        """
         matches = []
         players_copy = self.players.copy()
         while players_copy:
@@ -30,10 +39,15 @@ class Tournament:
 
     def get_opponents(self, player, paired_players):
         """
-        Function takes a player and finds among the other players in the tournament
-        Those against whom the player has not played, returning a list of these
+        La fonction prend un joueur et trouve parmi les autres joueurs du tournoi
+        ceux contre lesquels le joueur n'a pas joué. Cette liste est renvoyée si certains d'entre eux
+        n'ont pas déjà été associés dans le tour en cours.
+        Sinon, la fonction renvoie une liste de tous les autres joueurs du tournoi.
 
-        Alternatively, the function returns a list of all the other players in the tournament
+        Function takes a player and finds among the other players in the tournament
+        Those against whom the player has not played. This list is returned if some of them
+        have not already been paired up in the current round.
+        Alternatively, the function returns a list of all the other players in the tournament.
         """
         met_opponents = []
         for opponent in self.players:
@@ -55,20 +69,33 @@ class Tournament:
                     continue
                 break
 
+        # First check: if player has already played against all opponents
+        # a list of all opponents is returned
         if len(met_opponents) == len(self.players) - 1:
             return list(x for x in met_opponents if x not in paired_players)
         else:
+            # Second possibility: if first check is not validated, then check if
+            # any players against whom the player has not played against are still
+            # unpaired in this round, and return them
             unmet_opponents = list(x for x in self.players if x not in met_opponents)
             unmet_opponents.remove(player)
             unmet_and_unpaired_opponents = list(
                 x for x in unmet_opponents if x not in paired_players
             )
+            # Otherwise, return all other players in tournament.
             if not unmet_and_unpaired_opponents:
                 return list(x for x in met_opponents if x not in paired_players)
             else:
                 return unmet_and_unpaired_opponents
 
     def create_matches(self):
+        """
+        La fonction gère le processus de création de paires pour n'importe quel tour du tournoi
+        à l'exception du premier.
+
+        Function manages the process off creating pairs for any round in the tournament
+        apart from the first.
+        """
         matches = []
         players = self.players
         ranked_players = list(self.get_ranking().keys())
@@ -78,10 +105,7 @@ class Tournament:
                 # We first check if the player has already been paired
                 if player in paired_players:
                     continue
-                # print(f"Trying to pair: {player.first_name} {player.last_name}")
-                # Create a list of all players the player has not played against yet
-                # If they have played against them all, then return all other players
-                # We also pass the list of already paired players
+                # Call relevant functions and sort resulting player options by rank
                 opponents = self.get_opponents(player, paired_players)
                 # the opponent is the highest ranked in the previous list
                 opponent = self.find_highest_ranked(opponents, ranked_players)
@@ -92,6 +116,10 @@ class Tournament:
         return matches
 
     def find_highest_ranked(self, objects, ranked_list):
+        """
+        Recherche le joueur le mieux classé dans une liste de joueurs donnée.
+        Finds the highest ranked among any given list of players.
+        """
         valid_indices = [
             ranked_list.index(obj) for obj in objects if obj in ranked_list
         ]
@@ -99,6 +127,14 @@ class Tournament:
         return ranked_list[highest_rank_index]
 
     def generate_new_round(self):
+        """
+        Gère l'ensemble du processus de création d'un nouveau tour,
+        y compris l'appel des fonctions d'appariement appropriées
+        fonctions d'appariement pertinentes
+
+        Manages the overall process of creating a new round, including calling the
+        relevant match pairing functions
+        """
         name_of_round = "Round " + str(len(self.rounds) + 1)
         if len(self.rounds) == 0:
             matches = self.create_first_matches()
@@ -109,6 +145,11 @@ class Tournament:
         return round
 
     def get_ranking(self):
+        """
+        Crée un dictionnaire de classement de tous les joueurs et de leurs scores actuels dans le tournoi.
+
+        Creates a ranked dictionary of all players and their current scores in the tournament
+        """
         total_scores = []
         for player in self.players:
             pair = []

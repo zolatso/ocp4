@@ -2,18 +2,21 @@ import datetime
 from random import sample
 from models.round import Round
 
+
 class Tournament:
     def __init__(self, **kwargs):
-        self.name = kwargs['name']
-        self.place = kwargs.get('place', 'Marseille')
-        self.start_date = datetime.datetime.strptime(kwargs['start_date'], "%d/%m/%Y").date()
-        self.number_of_rounds = kwargs.get('number_of_rounds', 4)
-        #self.current_round = kwargs.get('current_round', 0)
-        self.players = kwargs['players']
-        self.rounds = kwargs.get('rounds', [])
-        self.description = kwargs.get('description', 'No description')
-        self.complete = kwargs.get('complete', False)
-    
+        self.name = kwargs["name"]
+        self.place = kwargs.get("place", "Marseille")
+        self.start_date = datetime.datetime.strptime(
+            kwargs["start_date"], "%d/%m/%Y"
+        ).date()
+        self.number_of_rounds = kwargs.get("number_of_rounds", 4)
+        # self.current_round = kwargs.get('current_round', 0)
+        self.players = kwargs["players"]
+        self.rounds = kwargs.get("rounds", [])
+        self.description = kwargs.get("description", "No description")
+        self.complete = kwargs.get("complete", False)
+
     def create_first_matches(self):
         matches = []
         players_copy = self.players.copy()
@@ -52,12 +55,14 @@ class Tournament:
                     continue
                 break
 
-        if (len(met_opponents) == len(self.players) - 1):
+        if len(met_opponents) == len(self.players) - 1:
             return list(x for x in met_opponents if x not in paired_players)
         else:
             unmet_opponents = list(x for x in self.players if x not in met_opponents)
             unmet_opponents.remove(player)
-            unmet_and_unpaired_opponents = list(x for x in unmet_opponents if x not in paired_players) 
+            unmet_and_unpaired_opponents = list(
+                x for x in unmet_opponents if x not in paired_players
+            )
             if not unmet_and_unpaired_opponents:
                 return list(x for x in met_opponents if x not in paired_players)
             else:
@@ -88,27 +93,21 @@ class Tournament:
 
     def find_highest_ranked(self, objects, ranked_list):
         valid_indices = [
-            ranked_list.index(obj) 
-            for obj in objects 
-            if obj in ranked_list
+            ranked_list.index(obj) for obj in objects if obj in ranked_list
         ]
         highest_rank_index = min(valid_indices)
         return ranked_list[highest_rank_index]
 
-            
     def generate_new_round(self):
         name_of_round = "Round " + str(len(self.rounds) + 1)
         if len(self.rounds) == 0:
             matches = self.create_first_matches()
         else:
             matches = self.create_matches()
-        round = Round(
-            name = name_of_round,
-            matches = matches
-        )
+        round = Round(name=name_of_round, matches=matches)
         self.rounds.append(round)
         return round
-    
+
     def get_ranking(self):
         total_scores = []
         for player in self.players:
@@ -127,9 +126,11 @@ class Tournament:
             total_scores.append(pair)
         ranking = dict(sorted(total_scores, key=lambda item: item[1], reverse=True))
         return ranking
-    
+
+
 def main():
     pass
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

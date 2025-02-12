@@ -1,0 +1,17 @@
+{
+    "name": "New tournament",
+    "place": "Marseille",
+    "date": "15/10/2023",
+    "number_of_rounds": 6,
+    "players": [
+        "Michael Saunders",
+        "Betty Picasso",
+        "Sheila Mingus",
+        "Josephine Hodgson",
+        "William Peterson",
+        "Roisin Hodgson"
+    ],
+    "rounds": [],
+    "description": "a great tournament",
+    "complete": false
+}

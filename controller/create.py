@@ -29,7 +29,7 @@ class CreatePlayer:
             if re.match(pattern, result):
                 return result
             else:
-                self.view.error_msg()
+                self.view.error_msg("Input error: Please check the format")
 
     def run(self):
         """

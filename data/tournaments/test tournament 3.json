@@ -1,0 +1,82 @@
+{
+    "name": "test tournament 3",
+    "place": "Marseille",
+    "date": "15/11/1986",
+    "number_of_rounds": 4,
+    "players": [
+        "Barclay Jones",
+        "Ben Jones"
+    ],
+    "rounds": [
+        {
+            "name": "Round 1",
+            "start_date": "06/02/2025",
+            "matches": [
+                [
+                    [
+                        "Barclay Jones",
+                        1
+                    ],
+                    [
+                        "Ben Jones",
+                        0
+                    ]
+                ]
+            ],
+            "complete": true
+        },
+        {
+            "name": "Round 2",
+            "start_date": "06/02/2025",
+            "matches": [
+                [
+                    [
+                        "Barclay Jones",
+                        0
+                    ],
+                    [
+                        "Ben Jones",
+                        1
+                    ]
+                ]
+            ],
+            "complete": true
+        },
+        {
+            "name": "Round 3",
+            "start_date": "06/02/2025",
+            "matches": [
+                [
+                    [
+                        "Barclay Jones",
+                        0.5
+                    ],
+                    [
+                        "Ben Jones",
+                        0.5
+                    ]
+                ]
+            ],
+            "complete": true
+        },
+        {
+            "name": "Round 4",
+            "start_date": "06/02/2025",
+            "matches": [
+                [
+                    [
+                        "Barclay Jones",
+                        1
+                    ],
+                    [
+                        "Ben Jones",
+                        0
+                    ]
+                ]
+            ],
+            "complete": true
+        }
+    ],
+    "description": "Test",
+    "complete": true
+}

@@ -1,0 +1,17 @@
+{
+    "name": "test tournament 5",
+    "place": "Marseille",
+    "date": "10/06/2023",
+    "number_of_rounds": 5,
+    "players": [
+        "Peter Baker",
+        "Gilles Peterson",
+        "Michael Saunders",
+        "Nicholas Peterson",
+        "Sheila Turner",
+        "Josephine Bacon"
+    ],
+    "rounds": [],
+    "description": "test tournament",
+    "complete": false
+}

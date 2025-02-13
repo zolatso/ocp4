@@ -147,7 +147,9 @@ class TournamentMenuView(MenuView):
         )
 
     def error_msg(self, error):
+        print("\n")
         print(f"Input error: {error}")
+        print("\n")
 
     def dislay_matches(self, round):
         for match in enumerate(round.matches):

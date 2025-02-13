@@ -1,5 +1,5 @@
 {
-    "name": "tournament 5454657",
+    "name": "test tournament 4",
     "place": "Marseille",
     "date": "10/10/2024",
     "number_of_rounds": 4,
@@ -161,6 +161,6 @@
             "complete": true
         }
     ],
-    "description": "A difficult tournament",
+    "description": "A test tournament",
     "complete": true
 }

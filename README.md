@@ -4,7 +4,7 @@ Projet 4 du programme de formation Développeur Python d’OpenClassrooms
 ## Installation  
 1. Clonez le dépôt : 
 ```bash
- git clone https://github.com/yourusername/yourproject.git
+ git clone https://github.com/zolatso/ocp4.git
 ``` 
 
 2. Créez et activez l’environnement virtuel (depuis le dossier racine du projet) :  
@@ -45,7 +45,7 @@ Project 4 for the OpenClassrooms Python Developer Training Program
 ## Installation
 1. Clone the repository:
 ```bash
- git clone https://github.com/yourusername/yourproject.git
+ git clone https://github.com/zolatso/ocp4.git
 ```
 
 2. Create and activate virtual environment (from root folder of project):
